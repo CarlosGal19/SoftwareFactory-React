@@ -1,5 +1,6 @@
-import{ FC, useEffect, useState } from 'react'
+import{ FC, useEffect, useState, FormEvent } from 'react'
 import axiosClient from '../../config/axios'
+import useMajor from '../../hooks/useMajor'
 
 interface Majors {
     id: number
@@ -9,6 +10,7 @@ interface Majors {
 
 const Major: FC = () => {
 
+    const {major} = useMajor();
     const [majors, setMajors] = useState<Majors[]>([])
 
     useEffect(() => {
@@ -23,11 +25,15 @@ const Major: FC = () => {
         fetchMajors();
     }, [])
 
+    const handleChange = (e: FormEvent) => {
+        console.log(e.target)
+    }
+
   return (
     <>
         <select name="major" id="major">
             {
-                !majors.length ? <option value="">No majors</option> : majors.map(major => (
+                !majors.length ? <option value={major} onChange={handleChange}>No majors</option> : majors.map(major => (
                     <option key={major.id} value={major.id}>{major.name}</option>
                 ))
             }
