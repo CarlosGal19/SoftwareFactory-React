@@ -27,7 +27,6 @@ const Major: FC = () => {
     const handleChange = (e: FormEvent<HTMLSelectElement>) => {
         const value = parseInt(e.currentTarget.value);
         setMajor(value);
-        console.log(value);
     }
 
     return (
