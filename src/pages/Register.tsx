@@ -161,7 +161,7 @@ const Register: FC = () => {
         </form>
         <div className="flex justify-evenly">
           <p className="mt-5 text-center">
-            Already have an account? <Link to="/login" className="text-blue-700">Log in</Link>
+            Already have an account? <Link to="/" className="text-blue-700">Log in</Link>
           </p>
           <p className="mt-5 text-center">
             <Link to="/forget-password" className="text-blue-700">Forgot password?</Link>
