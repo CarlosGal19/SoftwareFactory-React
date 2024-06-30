@@ -1,34 +1,33 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axiosClient from "../config/axios";
 import Alert from "../components/Alert";
 
-interface AlertType {
-  type: string;
-  msg: string;
-}
-
 const ConfirmAccount = () => {
-  const [alert, setAlert] = useState<AlertType>({ type: '', msg: ''});
+  const [alert, setAlert] = useState({ type: '', msg: ''});
   const [loading, setLoading] = useState(true);
   const [confirm, setConfirm] = useState(false);
   const { id } = useParams<{ id: string }>();
 
+  // Ref to track if the checkToken function has already been called
+  const hasFetched = useRef(false);
+
   useEffect(() => {
-    console.log(id);
     const checkToken = async () => {
+      if (hasFetched.current) {
+        return;
+      }
+      hasFetched.current = true;
       try {
         const response = await axiosClient.get(`/users/confirm/${id}`);
         if (response.status === 200) {
-          console.log(response);
           setConfirm(true);
           setAlert({
             type: 'success',
-            msg: 'Account confirmed. Go to login',
+            msg: response.data.msg,
           });
         }
       } catch (error: any) {
-        console.log(error.response);
         setAlert({
           type: 'alert',
           msg: error.response?.data?.message || 'An error occurred',
@@ -38,7 +37,7 @@ const ConfirmAccount = () => {
       }
     };
     checkToken();
-  }, [id]);
+  }, [id, confirm]);
 
   return (
     <>
