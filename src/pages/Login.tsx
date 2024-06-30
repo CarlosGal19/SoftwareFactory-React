@@ -12,9 +12,7 @@ const Login: FC = () => {
     e.preventDefault();
     try {
       const response = await axiosClient.post('/users/login', { email, password });
-      console.log('Login response:', response);
-      console.log('Token:', response.data);
-      // Handle successful response, like redirecting the user, storing the token, etc.
+      console.log(response.data);
     } catch (error: any) {
       console.error('Error:', error.response.data);
       setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
