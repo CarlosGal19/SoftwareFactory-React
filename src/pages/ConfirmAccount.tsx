@@ -9,7 +9,7 @@ interface AlertType {
 }
 
 const ConfirmAccount = () => {
-  const [alert, setAlert] = useState({ type: '', msg: ''});
+  const [alert, setAlert] = useState<AlertType>({ type: '', msg: ''});
   const [loading, setLoading] = useState(true);
   const [confirm, setConfirm] = useState(false);
   const { id } = useParams<{ id: string }>();
