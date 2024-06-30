@@ -16,7 +16,7 @@ const ForgetPassword = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     console.log(email)
-    if(!email || email.length < 10){
+    if (!email || email.length < 10) {
       setAlert({
         type: 'alert',
         msg: 'Please enter a valid email'
@@ -26,7 +26,7 @@ const ForgetPassword = () => {
     try {
       const response = await axiosClient.post('/users/forget-password', { email })
       console.log(response)
-      if(response.status === 200){
+      if (response.status === 200) {
         setAlert({
           type: 'success',
           msg: response.data.message
@@ -50,12 +50,12 @@ const ForgetPassword = () => {
         {
           alert.msg && (
             <Alert type={alert.type} msg={alert.msg} />
-            )
+          )
         }
         <form onSubmit={handleSubmit}>
           <div className="my-6">
             <label htmlFor="email" className="uppercase text-gray-600 block text-xl font-bold">Email</label>
-            <input value={email} onChange={e => setEmail(e.target.value)} type="email" id="email" placeholder="Your email" className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"/>
+            <input value={email} onChange={e => setEmail(e.target.value)} type="email" id="email" placeholder="Your email" className="border w-full p-3 mt-3 bg-gray-50 rounded-xl" />
           </div>
           <input type="submit" value="Send instructions" className="bg-indigo-700 text-white font-bold rounded-xl w-full py-3 uppercase mt-5  hover:cursor-pointer hover:bg-indigo-900 md:w-auto px-16" />
         </form>
