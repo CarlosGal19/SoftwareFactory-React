@@ -5,6 +5,11 @@ import useMajor from "../hooks/useMajor";
 import Alert from "../components/Alert";
 import axiosClient from "../config/axios";
 
+interface AlertType {
+  type: string;
+  msg: string;
+}
+
 const Register: FC = () => {
   const { major } = useMajor();
   const [name, setName] = useState('');
@@ -16,7 +21,7 @@ const Register: FC = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
-  const [alert, setAlert] = useState({ type: '', msg: '' });
+  const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
