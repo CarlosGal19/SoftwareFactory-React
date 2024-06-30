@@ -3,6 +3,11 @@ import { useEffect, useState, useRef } from "react";
 import axiosClient from "../config/axios";
 import Alert from "../components/Alert";
 
+interface AlertType {
+  type: string;
+  msg: string;
+}
+
 const ConfirmAccount = () => {
   const [alert, setAlert] = useState({ type: '', msg: ''});
   const [loading, setLoading] = useState(true);
@@ -20,14 +25,16 @@ const ConfirmAccount = () => {
       hasFetched.current = true;
       try {
         const response = await axiosClient.get(`/users/confirm/${id}`);
+        console.log('Confirm account response:', response);
         if (response.status === 200) {
           setConfirm(true);
           setAlert({
             type: 'success',
-            msg: response.data.msg,
+            msg: response.data.message,
           });
         }
       } catch (error: any) {
+        console.log('Confirm account error:', error);
         setAlert({
           type: 'alert',
           msg: error.response?.data?.message || 'An error occurred',
@@ -37,7 +44,7 @@ const ConfirmAccount = () => {
       }
     };
     checkToken();
-  }, [id, confirm]);
+  }, [id]);
 
   return (
     <>
