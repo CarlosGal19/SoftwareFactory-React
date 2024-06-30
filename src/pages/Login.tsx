@@ -17,7 +17,7 @@ const Login: FC = () => {
       // Handle successful response, like redirecting the user, storing the token, etc.
     } catch (error: any) {
       console.error('Error:', error.response.data);
-      setAlert({ msg: error.response.data.error || 'An error occurred', type: 'alert' });
+      setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
     }
   };
 
