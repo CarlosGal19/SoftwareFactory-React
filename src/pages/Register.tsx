@@ -47,6 +47,10 @@ const Register: FC = () => {
         major_id: major,
         password,
       });
+      setAlert({
+        type: 'success',
+        msg: response.data.message
+      })
       console.log('Register response:', response);
     } catch (error: any) {
       console.log('Register error:', error.response.data);
