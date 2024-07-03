@@ -10,6 +10,13 @@ const Login: FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if ([email, password].includes('')) {
+      setAlert({
+        type: 'alert',
+        msg: 'Both fields are required'
+      })
+      return;
+    }
     try {
       const response = await axiosClient.post('/users/login', { email, password });
       console.log(response.data);
