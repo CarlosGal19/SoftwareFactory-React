@@ -1,4 +1,4 @@
-import { useState, FC, FormEvent } from "react";
+import { useState, FC, FormEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Major from "../components/Selectors/Major";
 import useMajor from "../hooks/useMajor";
@@ -11,7 +11,7 @@ interface AlertType {
 }
 
 const Register: FC = () => {
-  const { major } = useMajor();
+  const { major, setMajor } = useMajor();
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userName, setUserName] = useState('');
@@ -47,6 +47,15 @@ const Register: FC = () => {
         major_id: major,
         password,
       });
+      setMajor(0);
+      setName('');
+      setLastName('');
+      setUserName('');
+      setEmail('');
+      setBirthDate('');
+      setGenre('');
+      setPassword('');
+      setRepeatPassword('');
       setAlert({
         type: 'success',
         msg: response.data.message

@@ -41,6 +41,7 @@ const NewPassword = () => {
             }
             response = await axiosClient.post(`/users/forget-password/${token}`, { password });
             if (response.status === 200) {
+                setPassword('');
                 setAlert({
                     type: 'success',
                     msg: response.data.message

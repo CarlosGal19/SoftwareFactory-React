@@ -19,6 +19,8 @@ const Login: FC = () => {
     }
     try {
       const response = await axiosClient.post('/users/login', { email, password });
+      setEmail('');
+      setPassword('');
       console.log(response.data);
     } catch (error: any) {
       console.error('Error:', error.response.data);
