@@ -7,8 +7,8 @@ import NewPassword from './pages/Login/NewPassword'
 import ConfirmAccount from './pages/Login/ConfirmAccount'
 import { MajorProvider } from "./context/MajorProvider.tsx"
 import { AuthProvider } from "./context/AuthProvider.tsx"
-import Home from './pages/Protect/Home.tsx'
-
+import HomeLayout from './layout/AuthLayout'
+import Home from './pages/Protect/Home'
 
 function App() {
 
@@ -25,8 +25,8 @@ function App() {
                   <Route path='forget-password/:token' element={<NewPassword/>} />
                   <Route path='confirm-account/:id' element={<ConfirmAccount/>} />
                 </Route>
-                <Route path="/home" element={<Home />}>
-
+                <Route path="/home" element={<HomeLayout />}>
+                  <Route index element={<Home />} />
                 </Route>
             </Routes>
           </BrowserRouter>
