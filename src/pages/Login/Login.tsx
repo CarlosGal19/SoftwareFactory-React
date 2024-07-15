@@ -2,8 +2,15 @@ import { useState, FormEvent, FC } from 'react';
 import { Link } from 'react-router-dom';
 import Alert from '../../components/Alert';
 import axiosClient from '../../config/axios';
+import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Login: FC = () => {
+
+  const { login } = useAuth();
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [alert, setAlert] = useState<{ msg: string; type: string }>({ msg: '', type: '' });
@@ -21,7 +28,8 @@ const Login: FC = () => {
       const response = await axiosClient.post('/users/login', { email, password });
       setEmail('');
       setPassword('');
-      console.log(response.data);
+      login(response.data.token);
+      navigate('/home');
     } catch (error: any) {
       console.error('Error:', error.response.data);
       setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
