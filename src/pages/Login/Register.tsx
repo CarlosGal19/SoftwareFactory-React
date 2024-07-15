@@ -1,9 +1,9 @@
-import { useState, FC, FormEvent, useEffect } from "react";
+import { useState, FC, FormEvent } from "react";
 import { Link } from "react-router-dom";
-import Major from "../components/Selectors/Major";
-import useMajor from "../hooks/useMajor";
-import Alert from "../components/Alert";
-import axiosClient from "../config/axios";
+import Major from "../../components/Selectors/Major";
+import useMajor from "../../hooks/useMajor";
+import Alert from "../../components/Alert";
+import axiosClient from "../../config/axios";
 
 interface AlertType {
   type: string;

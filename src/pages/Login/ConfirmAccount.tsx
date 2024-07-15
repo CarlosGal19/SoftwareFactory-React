@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import axiosClient from "../config/axios";
-import Alert from "../components/Alert";
+import axiosClient from "../../config/axios";
+import Alert from "../../components/Alert";
 
 interface AlertType {
   type: string;

@@ -1,21 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AuthLayout from "./layout/AuthLayout"
-import Login from './pages/Login.tsx'
-import Register from './pages/Register'
-import ForgetPassword from './pages/ForgetPassword'
-import NewPassword from './pages/NewPassword'
-import ConfirmAccount from './pages/ConfirmAccount'
+import Login from './pages/Login/Login.tsx'
+import Register from './pages/Login/Register'
+import ForgetPassword from './pages/Login/ForgetPassword'
+import NewPassword from './pages/Login/NewPassword'
+import ConfirmAccount from './pages/Login/ConfirmAccount'
 import { MajorProvider } from "./context/MajorProvider.tsx"
 import { AuthProvider } from "./context/AuthProvider.tsx"
+import Home from './pages/Protect/Home.tsx'
+
 
 function App() {
 
   return (
     <>
       <AuthProvider>
+          <MajorProvider>
           <BrowserRouter>
             <Routes>
-              <MajorProvider>
                 <Route path="/" element={<AuthLayout />} >
                   <Route index element={<Login/>}/>
                   <Route path='register' element={<Register/>} />
@@ -23,9 +25,12 @@ function App() {
                   <Route path='forget-password/:token' element={<NewPassword/>} />
                   <Route path='confirm-account/:id' element={<ConfirmAccount/>} />
                 </Route>
-              </MajorProvider>
+                <Route path="/home" element={<Home />}>
+
+                </Route>
             </Routes>
           </BrowserRouter>
+        </MajorProvider>
       </AuthProvider>
     </>
   )
