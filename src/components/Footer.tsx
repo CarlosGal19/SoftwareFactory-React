@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -37,24 +37,24 @@ function Footer() {
                     </div>
                     <ul className="flex space-x-4">
                         <li>
-                            <a href="https://utma.edu.mx" target="blank">
+                            <Link to="https://utma.edu.mx" target="blank">
                                 <img className="w-6 h-6" src="images/utmaLogotype.png" alt="UTMA" /> {/* UTMA logo link */}
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/UTMABiS/?locale=es_LA" target="blank">
+                            <Link to="https://www.facebook.com/UTMABiS/?locale=es_LA" target="blank">
                                 <img className="w-6 h-6" src="images/facebook.png" alt="Facebook" /> {/* Facebook link */}
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://www.tiktok.com/@utmetropolitana" target="blank">
+                            <Link to="https://www.tiktok.com/@utmetropolitana" target="blank">
                                 <img className="w-6 h-6" src="images/tik.png" alt="TikTok" /> {/* TikTok link */}
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#!" target="blank">
+                            <Link to="/" target="blank">
                                 <img className="w-6 h-6" src="images/whatsapp.png" alt="WhatsApp" /> {/* WhatsApp link */}
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
