@@ -41,7 +41,7 @@ const Register: FC = () => {
         name,
         last_name: lastName,
         user_name: userName,
-        email,
+        email: email.toLowerCase(),
         birth_date: birthDate,
         genre,
         major_id: major,
