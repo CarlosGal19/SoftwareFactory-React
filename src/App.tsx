@@ -10,6 +10,7 @@ import { AuthProvider } from "./context/AuthProvider.tsx";
 import Home from './pages/Protect/Home';
 import ProtectedRoute from './layout/ProtectedLayout.tsx';
 import Profile from './pages/Protect/Profile';
+import Settings from './pages/Protect/Settings'
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
               </Route>
               <Route path="/profile" element={<ProtectedRoute />}>
                 <Route index element={<Profile />} />
+              </Route>
+              <Route path="/settings" element={<ProtectedRoute />}>
+                <Route index element={<Settings />} />
               </Route>
             </Routes>
           </BrowserRouter>
