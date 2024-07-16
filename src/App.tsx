@@ -8,8 +8,8 @@ import ConfirmAccount from './pages/Login/ConfirmAccount';
 import { MajorProvider } from "./context/MajorProvider.tsx";
 import { AuthProvider } from "./context/AuthProvider.tsx";
 import Home from './pages/Protect/Home';
-import ProtectedRoute from './layout/ProtectedRoute';
-import Profile from './pages/Protect/Profile.tsx';
+import ProtectedRoute from './layout/ProtectedLayout.tsx';
+import Profile from './pages/Protect/Profile';
 
 function App() {
 
