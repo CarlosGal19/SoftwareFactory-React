@@ -50,7 +50,7 @@ const ConfirmAccount = () => {
     <>
       <div className="shadow-lg px-5 py-10 rounded-xl bg-white">
         <div className='flex justify-center mb-6'>
-          <img src="./UTMA.jpg" alt="UTMA LOGO" />
+          <img src="./UTMA.png" alt="UTMA LOGO" />
         </div>
         <div className='mt-20 md:mt-5 px-5 py-10 rounded-xl bg-white'>
           {!loading && <Alert type={alert.type} msg={alert.msg} />}
