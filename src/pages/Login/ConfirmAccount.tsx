@@ -48,20 +48,20 @@ const ConfirmAccount = () => {
 
   return (
     <>
-      <div>
-        <h1 className="text-6xl font-bold text-black">
-          Confirm your account and watch the newest <span className="text-blue-700">UTMA</span> info
-        </h1>
-      </div>
-      <div className='mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white'>
-        {!loading && <Alert type={alert.type} msg={alert.msg} />}
-        {confirm && (
-          <>
-            <nav className='mt-10 text-center'>
-              <Link to="/" className="text-indigo-500 hover:text-indigo-900">Login</Link>
-            </nav>
-          </>
-        )}
+      <div className="shadow-lg px-5 py-10 rounded-xl bg-white">
+        <div className='flex justify-center mb-6'>
+          <img src="./UTMA.jpg" alt="UTMA LOGO" />
+        </div>
+        <div className='mt-20 md:mt-5 px-5 py-10 rounded-xl bg-white'>
+          {!loading && <Alert type={alert.type} msg={alert.msg} />}
+          {confirm && (
+            <>
+              <nav className='mt-10 text-center'>
+                <Link to="/" className="text-indigo-500 hover:text-indigo-900">Login</Link>
+              </nav>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

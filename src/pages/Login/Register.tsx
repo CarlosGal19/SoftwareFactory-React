@@ -69,10 +69,8 @@ const Register: FC = () => {
 
   return (
     <>
-      <div>
-        <h1 className="text-6xl font-bold text-black">
-          Sign up and show the newest <span className="text-blue-700">UTMA</span> info
-        </h1>
+      <div className='flex justify-center mb-6'>
+        <img src="./UTMA.jpg" alt="UTMA LOGO" />
       </div>
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
         {alert.msg && <Alert type={alert.type} msg={alert.msg} />}

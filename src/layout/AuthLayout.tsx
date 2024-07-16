@@ -1,11 +1,13 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
 
 const AuthLayout = () => {
   return (
-    <main className="container mx-auto md:grid md:grid-cols-2 mt-16 gap-12 p-5 items-center">
-      <Outlet />
+    <main className="container mx-auto flex items-center justify-center min-h-screen p-5">
+      <div className="w-full max-w-md">
+        <Outlet />
+      </div>
     </main>
-  )
+  );
 }
 
-export default AuthLayout
+export default AuthLayout;
