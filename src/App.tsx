@@ -8,7 +8,7 @@ import ConfirmAccount from './pages/Login/ConfirmAccount';
 import { MajorProvider } from "./context/MajorProvider.tsx";
 import { AuthProvider } from "./context/AuthProvider.tsx";
 import Home from './pages/Protect/Home';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './layout/ProtectedRoute';
 import Profile from './pages/Protect/Profile.tsx';
 
 function App() {
