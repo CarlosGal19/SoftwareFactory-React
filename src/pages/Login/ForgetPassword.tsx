@@ -46,7 +46,7 @@ const ForgetPassword = () => {
     <>
       <div className="shadow-lg px-5 py-10 rounded-xl bg-white">
         <div className='flex justify-center mb-6'>
-          <img src="./UTMA.png" alt="UTMA LOGO" />
+          <img src="./utma.png" alt="UTMA LOGO" />
         </div>
         <div className='mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white'>
           {
@@ -59,11 +59,11 @@ const ForgetPassword = () => {
               <label htmlFor="email" className="uppercase text-gray-600 block text-xl font-bold">Email</label>
               <input value={email} onChange={e => setEmail(e.target.value)} type="email" id="email" placeholder="Your email" className="border w-full p-3 mt-3 bg-gray-50 rounded-xl" />
             </div>
-            <input type="submit" value="Send instructions" className="bg-indigo-700 text-white font-bold rounded-xl w-full py-3 uppercase mt-5  hover:cursor-pointer hover:bg-indigo-900 md:w-auto px-16" />
+            <input type="submit" value="Send instructions" className="bg-indigo-700 text-white font-bold rounded-xl w-full py-3 uppercase mt-5 hover:cursor-pointer hover:bg-indigo-900 px-16" />
           </form>
           <nav className='mt-10'>
-            <ul className="flex justify-evenly mt-5 text-center">
-              <li>
+            <ul className="flex justify-evenly mt-5 text-center items-center">
+              <li className="flex flex-col w-2/3">
                 Do you already have an account? <Link to="/" className="text-indigo-500 hover:text-indigo-900">Login</Link>
               </li>
               <li>
