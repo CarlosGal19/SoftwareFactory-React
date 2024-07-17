@@ -31,7 +31,7 @@ export function Header() {
                         <ul className="flex space-x-4">
                             <li className="nav-item"><Link to="/profile" className="text-gray-300 hover:text-white">My Account</Link></li>
                             <li className="nav-item relative">
-                                <a className="text-gray-300 hover:text-white cursor-pointer" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+                                <Link to='/settings' className="text-gray-300 hover:text-white cursor-pointer" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</Link>
                                 {/* <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20">
                                     <h6 className="block px-4 py-2 text-sm text-gray-700">Seguridad y Privacidad</h6>
                                     <Link to="/password" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cambiar mi contraseña</Link>
