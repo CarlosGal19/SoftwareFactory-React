@@ -17,11 +17,7 @@ const Major: FC<MajorProps> = ({ id }) => {
   useEffect(() => {
     const fetchMajors = async () => {
       try {
-        const response = await axiosClient.get(`majors/${id}`, {
-          headers: {
-            Authorization: `Bearer ${jwt}`
-          }
-        });
+        const response = await axiosClient.get(`majors/${id}`);
         setMajors(response.data.major);
         console.log(response.data.major);
       } catch (error: any) {
