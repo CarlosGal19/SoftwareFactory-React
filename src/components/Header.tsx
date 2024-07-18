@@ -41,7 +41,7 @@ export function Header() {
                                     <Link to="/help" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Centro de ayuda</Link>
                                 </div> */}
                             </li>
-                            <li className="nav-item text-gray-300 hover:text-white" onClick={handleClick}>Sign out</li>
+                            <li className="nav-item text-gray-300 hover:text-white hover:cursor-pointer" onClick={handleClick}>Sign out</li>
                         </ul>
                     </div>
                 </div>

@@ -44,7 +44,7 @@ const Forums: FC = () => {
                     forums.map(forum => (
                         <div onClick={()=> {
                             navigate(`/forum/${forum.id}`)
-                        }} key={forum.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center hover:shadow-blue-200">
+                        }} key={forum.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center hover:shadow-blue-200 hover:cursor-pointer">
                             <h1 className="text-2xl font-bold text-gray-800">{forum.name}</h1>
                             <p className="text-gray-700">{forum.description}</p>
                         </div>
