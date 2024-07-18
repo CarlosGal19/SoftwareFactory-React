@@ -1,7 +1,6 @@
 import axiosClient from "../../config/axios";
-import { useEffect, useState, FC } from "react";
+import { useEffect, FC, useState } from "react";
 import Alert from "../../components/Alert";
-import Major from '../../components/Descriptions/Major';
 
 type User = {
     id: number;
@@ -20,6 +19,7 @@ type User = {
 
 const Settings: FC = () => {
     const [user, setUser] = useState<User>({} as User);
+    const [major, setMajor] = useState({ name: '', description: '' });
     const [alert, setAlert] = useState({ msg: '', type: '' });
 
     const jwt = localStorage.getItem('jwt');
@@ -27,13 +27,13 @@ const Settings: FC = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axiosClient.get('users/profile', {
+                const response = await axiosClient.get('majors/me', {
                     headers: {
                       Authorization: `Bearer ${jwt}`
                     }
                   });
-                console.log(response.data);
                 setUser(response.data.user);
+                setMajor(response.data.major);
             } catch (error: any) {
                 console.error('Error:', error.response.data);
                 setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
@@ -59,7 +59,7 @@ const Settings: FC = () => {
                                 <p><span className="font-semibold">Email:</span> {user.email}</p>
                                 <p><span className="font-semibold">Username:</span> {user.user_name}</p>
                                 <p><span className="font-semibold">Gender:</span> {user.genre}</p>
-                                <Major id={user.major_id} />
+                                <p><span className="font-semibold">Major:</span> {major.name} - {major.description}</p>
                                 <p><span className="font-semibold">Birth Date:</span> {user.birth_date}</p>
                             </div>
                         </div>
