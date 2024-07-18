@@ -37,10 +37,10 @@ const Forums: FC = () => {
     return (
         <>
             {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
-            <div className='my-24 w-1/5 ml-6'>
+            <div className='my-24 w-1/5 ml-6 hidden md:block'>
                 {
                     forums.map(forum => (
-                        <div key={forum.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center">
+                        <div key={forum.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center hover:shadow-blue-200">
                             <h1 className="text-2xl font-bold text-gray-800">{forum.name}</h1>
                             <p className="text-gray-700">{forum.description}</p>
                         </div>
