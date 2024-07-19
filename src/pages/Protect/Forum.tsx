@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Alert";
+import Topics from "../../components/Topics";
 
 type Forum = {
     id: number;
@@ -28,7 +29,6 @@ const Forum = () => {
                         Authorization: `Bearer ${jwt}`
                     }
                 });
-                console.log(response.data);
                 setForum(response.data.forum);
             } catch (error: any) {
                 console.log(error.response.data.message);
@@ -45,10 +45,10 @@ const Forum = () => {
         }
             <div className="w-3/4 mx-auto mt-24">
                 <div className="bg-white p-8 shadow-lg rounded-lg">
-                    <h1 className="text-6xl font-bold text-gray-800 my-16">{forum?.name}</h1>
-                    <p className="text-gray-700 my-6">{forum?.description}</p>
+                    <h1 className="text-6xl font-bold text-gray-800 my-8">{forum?.name}</h1>
+                    <p className="text-gray-700 mb-12">{forum?.description}</p>
                     <div>
-                        <p>Topics</p>
+                        <Topics id={forum?.id}/>
                     </div>
                 </div>
             </div>
