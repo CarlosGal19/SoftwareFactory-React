@@ -12,6 +12,7 @@ import ProtectedRoute from './layout/ProtectedLayout.tsx';
 import Profile from './pages/Protect/Profile';
 import Settings from './pages/Protect/Settings'
 import Forum from "./pages/Protect/Forum";
+import Topic from "./pages/Protect/Topic";
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
               </Route>
               <Route path="/forum/:id" element={<ProtectedRoute />}>
                 <Route index element={<Forum />} />
+              </Route>
+              <Route path="/topic/:id" element={<ProtectedRoute />}>
+                <Route index element={<Topic />} />
               </Route>
             </Routes>
           </BrowserRouter>
