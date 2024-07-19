@@ -10,7 +10,7 @@ type User = {
   email: string;
   user_name: string;
   user_type_id: number;
-  genre: string;
+  gender: string;
   major_id: number;
   birth_date: string;
   profile_photo: string;
@@ -57,7 +57,7 @@ const Profile: FC = () => {
               <div className="text-xl text-gray-700 space-y-4">
                 <p><span className="font-semibold">Email:</span> {user.email}</p>
                 <p><span className="font-semibold">Username:</span> {user.user_name}</p>
-                <p><span className="font-semibold">Genre:</span> {user.genre}</p>
+                <p><span className="font-semibold">Gender:</span> {user.gender}</p>
                 <p><span className="font-semibold">Birth Date:</span> {user.birth_date}</p>
               </div>
             </div>
