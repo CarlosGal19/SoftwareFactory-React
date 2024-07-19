@@ -39,7 +39,8 @@ const Forums: FC = () => {
     return (
         <>
             {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
-            <div className='my-24 w-1/5 ml-6 hidden md:block'>
+            <div className='my-36 w-1/5 ml-6 hidden md:block'>
+                <h2 className='text-center font-bold text-4xl'>Forums</h2>
                 {
                     forums.map(forum => (
                         <div onClick={()=> {
