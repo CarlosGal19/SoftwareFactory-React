@@ -45,7 +45,7 @@ const Topics: FC<{ id: string }> = ({ id }) => {
             {
                 topics.map((topic: Topic) => (
                     <div key={topic.id} className="bg-gray-100 p-4 my-4 rounded-lg hover:shadow-blue-200 hover:cursor-pointer shadow-lg" onClick={() => {
-                        navigate(`/topic/${topic.id}`)
+                        navigate(`/topic/${topic.name}/${topic.id}`)
                     } }>
                         <h2 className="text-2xl font-bold text-gray-800">{topic.name}</h2>
                         <p className="text-gray-700">{topic.description}</p>
