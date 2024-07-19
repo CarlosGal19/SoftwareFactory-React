@@ -30,6 +30,7 @@ const Topics: FC<{ id: string }> = ({ id }) => {
                     }
                 })
                 setTopics(response.data.topics);
+                setAlert({ msg: '', type: '' });
             } catch (error: any) {
                 setAlert({ msg: error.response.data.message, type: 'alert' })
             }
