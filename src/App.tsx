@@ -18,9 +18,9 @@ function App() {
 
   return (
     <>
-      <AuthProvider>
-        <MajorProvider>
-          <BrowserRouter>
+      <MajorProvider>
+        <BrowserRouter>
+          <AuthProvider>
             <Routes>
               <Route path="/" element={<AuthLayout />} >
                 <Route index element={<Login />} />
@@ -45,9 +45,9 @@ function App() {
                 <Route index element={<Topic />} />
               </Route>
             </Routes>
-          </BrowserRouter>
-        </MajorProvider>
-      </AuthProvider>
+          </AuthProvider>
+        </BrowserRouter>
+      </MajorProvider>
     </>
   )
 }
