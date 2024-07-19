@@ -4,9 +4,9 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const ProtectedRoute = () => {
-    const { isAuthenticated } = useAuth();
+    const { isAuth } = useAuth();
 
-    return isAuthenticated ? (
+    return isAuth ? (
         <>
             <Header />
             <Outlet />
