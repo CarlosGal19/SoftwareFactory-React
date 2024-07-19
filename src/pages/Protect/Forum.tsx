@@ -30,8 +30,8 @@ const Forum: FC = () => {
                     }
                 });
                 setForum(response.data.forum);
+                setAlert({ msg: '', type: '' });
             } catch (error: any) {
-                console.log(error.response.data.message);
                 setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
             }
         }

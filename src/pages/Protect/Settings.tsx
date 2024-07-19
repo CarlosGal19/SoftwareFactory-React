@@ -34,8 +34,8 @@ const Settings: FC = () => {
                   });
                 setUser(response.data.user);
                 setMajor(response.data.major);
+                setAlert({ msg: '', type: '' });
             } catch (error: any) {
-                console.error('Error:', error.response.data);
                 setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
             }
         }

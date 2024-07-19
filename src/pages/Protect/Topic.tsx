@@ -2,6 +2,7 @@
 import { FC, useEffect, useState } from "react"
 import axiosClient from "../../config/axios";
 import { useParams } from "react-router-dom";
+import Alert from "../../components/Static/Alert";
 
 type Post = {
     id: number;
@@ -17,6 +18,7 @@ type Post = {
 const Topic: FC = () => {
 
     const [posts, setPosts] = useState<Post[]>([]);
+    const [alert, setAlert] = useState({ type: '', msg: '' });
 
     const { id, name } = useParams();
     const jwt = localStorage.getItem('jwt');
@@ -31,7 +33,7 @@ const Topic: FC = () => {
                 })
                 setPosts(response.data.posts);
             } catch (error: any) {
-                console.log(error.response.data.message)
+                setAlert({ msg: error.response.data.message, type: 'alert' })
             }
         }
         fetchTopic();
@@ -43,7 +45,10 @@ const Topic: FC = () => {
                 <h2 className="text-6xl font-bold">Topic: {name}</h2>
                 <h3 className="text-4xl font-bold my-8">Posts</h3>
                 {
-                    posts.map((post: Post) => (
+                    alert.msg && <Alert type={alert.type} msg={alert.msg} />
+                }
+                {
+                    posts && posts.map((post: Post) => (
                         <div key={post.id} className="bg-gray-100 p-4 my-4 rounded-lg hover:shadow-blue-200 hover:cursor-pointer shadow-lg w-5/6 m-auto">
                             <h2 className="text-4xl font-bold text-gray-800 my-6">{post.title}</h2>
                             <h3 className="text-2xl font-semibold text-gray-800 my-4">{post.content}</h3>

@@ -34,6 +34,7 @@ const Profile: FC = () => {
           }
         });
         setUser(response.data.user);
+        setAlert({ msg: '', type: '' });
       } catch (error: any) {
         setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
       }

@@ -29,6 +29,7 @@ const Forums: FC = () => {
                     }
                 });
                 setForums(response.data);
+                setAlert({ msg: '', type: '' });
             } catch (error: any) {
                 setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
             }

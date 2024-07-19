@@ -28,8 +28,8 @@ const Posts: FC = () => {
                     }
                 });
                 setPosts(response.data.posts);
+                setAlert({ type: '', msg: '' });
             } catch (error: any) {
-                console.log(error);
                 setAlert({ type: 'error', msg: error.response.data.message });
             }
         };
