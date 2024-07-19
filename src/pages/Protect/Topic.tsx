@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 type Post = {
     id: number;
+    title: string;
     content: string;
     topic_id: number;
     creator_id: number;
@@ -42,8 +43,8 @@ const Topic: FC = () => {
                 {
                     posts.map((post: Post) => (
                         <div key={post.id} className="bg-gray-100 p-4 my-4 rounded-lg hover:shadow-blue-200 hover:cursor-pointer shadow-lg">
-                            <h2 className="text-2xl font-bold text-gray-800">{post.content}</h2>
-                            {/* <p className="text-gray-700">{post.url_img}</p> */}
+                            <h2 className="text-4xl font-bold text-gray-800">{post.title}</h2>
+                            <h3 className="text-2xl font-bold text-gray-800">{post.content}</h3>
                             <img src={post.url_img} alt="Image" className="w-24" />
                         </div>
                     ))
