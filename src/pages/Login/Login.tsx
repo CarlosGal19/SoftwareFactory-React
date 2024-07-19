@@ -29,7 +29,6 @@ const Login: FC = () => {
       login(response.data.token);
       navigate('/home');
     } catch (error: any) {
-      console.error('Error:', error.response.data);
       setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
     }
   };

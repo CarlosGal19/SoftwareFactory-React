@@ -14,7 +14,6 @@ const ConfirmAccount = () => {
   const [confirm, setConfirm] = useState(false);
   const { id } = useParams<{ id: string }>();
 
-  // Ref to track if the checkToken function has already been called
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -25,7 +24,6 @@ const ConfirmAccount = () => {
       hasFetched.current = true;
       try {
         const response = await axiosClient.get(`/users/confirm/${id}`);
-        console.log('Confirm account response:', response);
         if (response.status === 200) {
           setConfirm(true);
           setAlert({
@@ -34,7 +32,6 @@ const ConfirmAccount = () => {
           });
         }
       } catch (error: any) {
-        console.log('Confirm account error:', error);
         setAlert({
           type: 'alert',
           msg: error.response?.data?.message || 'An error occurred',

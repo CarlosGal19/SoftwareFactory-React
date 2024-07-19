@@ -14,8 +14,7 @@ const ForgetPassword = () => {
   const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(email)
+    e.preventDefault();
     if (!email || email.length < 10) {
       setAlert({
         type: 'alert',
@@ -24,8 +23,7 @@ const ForgetPassword = () => {
       return;
     }
     try {
-      const response = await axiosClient.post('/users/forget-password', { email })
-      console.log(response)
+      const response = await axiosClient.post('/users/forget-password', { email });
       if (response.status === 200) {
         setEmail('');
         setAlert({
@@ -34,7 +32,6 @@ const ForgetPassword = () => {
         })
       }
     } catch (error: any) {
-      console.log('Forget password error:', error.response.data)
       setAlert({
         type: 'alert',
         msg: error.response.data.message || 'An error occurred'

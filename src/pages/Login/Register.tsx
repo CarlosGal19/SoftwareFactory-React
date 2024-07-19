@@ -60,9 +60,7 @@ const Register: FC = () => {
         type: 'success',
         msg: response.data.message
       })
-      console.log('Register response:', response);
     } catch (error: any) {
-      console.log('Register error:', error.response.data);
       setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
     }
   };
