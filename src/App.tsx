@@ -41,7 +41,7 @@ function App() {
               <Route path="/forum/:id" element={<ProtectedRoute />}>
                 <Route index element={<Forum />} />
               </Route>
-              <Route path="/topic/:id" element={<ProtectedRoute />}>
+              <Route path="/topic/:name/:id" element={<ProtectedRoute />}>
                 <Route index element={<Topic />} />
               </Route>
             </Routes>
