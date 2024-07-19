@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, FC } from "react";
 import Alert from "../../components/Alert";
 import axiosClient from "../../config/axios";
 
@@ -8,7 +8,7 @@ interface AlertType {
   msg: string;
 }
 
-const ForgetPassword = () => {
+const ForgetPassword: FC = () => {
 
   const [email, setEmail] = useState('');
   const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });

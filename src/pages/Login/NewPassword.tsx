@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Alert from '../../components/Alert'
 import axiosClient from '../../config/axios'
@@ -8,7 +8,7 @@ interface AlertType {
     msg: string;
 }
 
-const NewPassword = () => {
+const NewPassword: FC = () => {
 
     const [password, setPassword] = useState('');
     const [passwordUpdated, setPasswordUpdated] = useState(false);

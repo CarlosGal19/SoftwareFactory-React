@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Alert";
 import Topics from "../../components/Topics";
@@ -13,7 +13,7 @@ type Forum = {
     updated_at: string;
 }
 
-const Forum = () => {
+const Forum: FC = () => {
 
     const [forum, setForum] = useState<Forum | null>(null);
     const { id } = useParams<{ id: string }>();

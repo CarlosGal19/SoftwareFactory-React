@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, FC } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Alert";
 
@@ -8,7 +8,7 @@ interface AlertType {
   msg: string;
 }
 
-const ConfirmAccount = () => {
+const ConfirmAccount: FC = () => {
   const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
   const [loading, setLoading] = useState(true);
   const [confirm, setConfirm] = useState(false);
