@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../config/axios";
 import Alert from "./Alert";
+import { FC } from "react";
 
-const Posts = () => {
-    const [posts, setPosts] = useState([]);
+type Post = {
+    id: number;
+    topic_id: number;
+    creatot_id: number;
+    title: string;
+    content: string;
+    url_img: string;
+    created_at: string;
+    updated_at: string;
+}
+
+const Posts: FC = () => {
+    const [posts, setPosts] = useState<Post[]>([]);
     const [alert, setAlert] = useState({ type: '', msg: '' });
     const jwt = localStorage.getItem('jwt');
 
@@ -31,9 +43,10 @@ const Posts = () => {
                 posts.length > 0 ? (
                     <ul>
                         {posts.map((post: any) => (
-                            <li key={post._id} className="my-4">
-                                <h3 className="text-2xl font-bold">{post.title}</h3>
-                                <p>{post.content}</p>
+                            <li key={post.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center w-1/2 m-auto">
+                                <h2 className="text-4xl font-bold">{post.title}</h2>
+                                <h3 className="text-2xl font-bold">{post.content}</h3>
+                                <img src={post.url_img} alt="Post Image" />
                             </li>
                         ))}
                     </ul>
