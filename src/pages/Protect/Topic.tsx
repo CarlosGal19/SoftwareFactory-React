@@ -18,7 +18,7 @@ const Topic: FC = () => {
 
     const [posts, setPosts] = useState<Post[]>([]);
 
-    const { id } = useParams();
+    const { id, name } = useParams();
     const jwt = localStorage.getItem('jwt');
 
     useEffect(() => {
@@ -39,7 +39,9 @@ const Topic: FC = () => {
 
     return (
         <>
-            <div className="my-32">
+            <div className="my-32 w-3/4 m-auto">
+                <h2 className="text-6xl font-bold">Topic: {name}</h2>
+                <h3 className="text-4xl font-bold my-8">Posts</h3>
                 {
                     posts.map((post: Post) => (
                         <div key={post.id} className="bg-gray-100 p-4 my-4 rounded-lg hover:shadow-blue-200 hover:cursor-pointer shadow-lg">
