@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Alert from './Alert';
-import axiosClient from '../config/axios';
+import Alert from '../Static/Alert';
+import axiosClient from '../../config/axios';
 
 type Forum = {
     id: number;

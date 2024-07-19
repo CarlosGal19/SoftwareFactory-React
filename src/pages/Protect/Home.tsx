@@ -1,6 +1,6 @@
-import Forums from '../../components/Forums';
-import Posts from '../../components/Posts';
-import Friends from '../../components/Friends';
+import Forums from '../../components/Home/Forums';
+import Posts from '../../components/Home/Posts';
+import Friends from '../../components/Home/Friends';
 
 const Home = () => {
 

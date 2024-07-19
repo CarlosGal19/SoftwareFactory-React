@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axiosClient from "../config/axios";
-import Alert from "./Alert";
+import axiosClient from "../../config/axios";
+import Alert from "../Static/Alert";
 import { FC } from "react";
 
 type Post = {

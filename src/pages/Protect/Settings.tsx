@@ -1,6 +1,6 @@
 import axiosClient from "../../config/axios";
 import { useEffect, FC, useState } from "react";
-import Alert from "../../components/Alert";
+import Alert from "../../components/Static/Alert";
 
 type User = {
     id: number;

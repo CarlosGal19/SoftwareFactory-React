@@ -1,6 +1,6 @@
-import axiosClient from "../config/axios";
+import axiosClient from "../../config/axios";
 import { useEffect, useState, FC } from "react";
-import Alert from "./Alert";
+import Alert from "../Static/Alert";
 import { useNavigate } from "react-router-dom";
 
 type Topic = {

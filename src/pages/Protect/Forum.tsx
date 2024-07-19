@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState, FC } from "react";
 import axiosClient from "../../config/axios";
-import Alert from "../../components/Alert";
-import Topics from "../../components/Topics";
+import Alert from "../../components/Static/Alert";
+import Topics from "../../components/Forum/Topics";
 
 type Forum = {
     id: number;

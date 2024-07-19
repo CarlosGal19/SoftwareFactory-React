@@ -1,6 +1,6 @@
 import { useState, FormEvent, FC } from 'react';
 import { Link } from 'react-router-dom';
-import Alert from '../../components/Alert';
+import Alert from '../../components/Static/Alert';
 import axiosClient from '../../config/axios';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';

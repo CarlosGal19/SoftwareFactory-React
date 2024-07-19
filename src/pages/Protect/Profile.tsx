@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useState, useEffect } from "react";
-import Alert from "../../components/Alert";
+import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
 
 type User = {
