@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Alert from '../Static/Alert';
 import axiosClient from '../../config/axios';
+import Forum from './Forum';
 
 type Forum = {
     id: number;
@@ -16,7 +16,6 @@ const Forums: FC = () => {
 
     const [alert, setAlert] = useState({ msg: '', type: '' });
     const [forums, setForums] = useState<Forum[]>([]);
-    const navigate = useNavigate();
 
     const jwt = localStorage.getItem('jwt');
 
@@ -40,16 +39,11 @@ const Forums: FC = () => {
     return (
         <>
             {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
-            <div className='my-36 w-1/5 ml-6 hidden md:block'>
-                <h2 className='text-center font-bold text-4xl'>Forums</h2>
+            <div className='mt-16 w-1/6 hidden md:block bg-teal-500'>
+                <h2 className='text-4xl font-bold text-center mt-4'>Forums</h2>
                 {
                     forums.map(forum => (
-                        <div onClick={()=> {
-                            navigate(`/forum/${forum.id}`)
-                        }} key={forum.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center hover:shadow-blue-200 hover:cursor-pointer">
-                            <h1 className="text-2xl font-bold text-gray-800">{forum.name}</h1>
-                            <p className="text-gray-700">{forum.description}</p>
-                        </div>
+                        <Forum key={forum.id} forum={forum} />
                     ))
                 }
             </div>
