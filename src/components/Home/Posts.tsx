@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../Static/Alert";
 import { FC } from "react";
+import Post from "./Post";
 
-type Post = {
+type OnePost = {
     id: number;
     topic_id: number;
     creator_id: number;
@@ -42,15 +43,11 @@ const Posts: FC = () => {
             {
                 posts.length > 0 ? (
                     <ul>
-                        {posts.map((post: Post) => (
-                            <li key={post.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center w-2/3 m-auto">
-                                <h2 className="text-4xl font-bold my-4">{post.title}</h2>
-                                <h3 className="text-2xl my-2 font-semibold">{post.content}</h3>
-                                <img src={post.url_img} alt="Post Image" className="m-auto" />
-                            </li>
+                        {posts.map((post: OnePost) => (
+                            <Post key={post.id} post={post} />
                         ))}
                     </ul>
-                ) : <p className="text-4xl font-bold my-8 text-center">No posts</p>
+                ) : <p className="text-4xl font-bold mt-8 text-center">No posts</p>
 
             }
         </>
