@@ -1,7 +1,7 @@
 const Friends = () => {
   return (
-    <div className="my-36 mx-8 w-1/5 hidden md:block">
-      <h1 className='text-center font-bold text-4xl'>Friend Suggestions</h1>
+    <div className="mt-16 w-1/6 hidden md:block bg-teal-500">
+      <h1 className='text-center font-bold text-4xl mt-4'>Friend Suggestions</h1>
     </div>
   )
 }
