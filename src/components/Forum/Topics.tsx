@@ -1,9 +1,9 @@
 import axiosClient from "../../config/axios";
 import { useEffect, useState, FC } from "react";
 import Alert from "../Static/Alert";
-import { useNavigate } from "react-router-dom";
+import Topic from "./Topic";
 
-type Topic = {
+type OneTopic = {
     id: number;
     name: string;
     description: string;
@@ -17,7 +17,6 @@ const Topics: FC<{ id: string }> = ({ id }) => {
 
     const [alert, setAlert] = useState({ type: '', msg: '' });
     const [topics, setTopics] = useState<Topic[]>([]);
-    const navigate = useNavigate();
 
     const jwt = localStorage.getItem('jwt');
 
@@ -44,13 +43,8 @@ const Topics: FC<{ id: string }> = ({ id }) => {
                 alert.msg && <Alert msg={alert.msg} type={alert.type} />
             }
             {
-                topics.map((topic: Topic) => (
-                    <div key={topic.id} className="bg-gray-100 p-4 my-4 rounded-lg hover:shadow-blue-200 hover:cursor-pointer shadow-lg" onClick={() => {
-                        navigate(`/topic/${topic.name}/${topic.id}`)
-                    } }>
-                        <h2 className="text-2xl font-bold text-gray-800">{topic.name}</h2>
-                        <p className="text-gray-700">{topic.description}</p>
-                    </div>
+                topics.map((topic: OneTopic) => (
+                    <Topic key={topic.id} topic={topic} />
                 ))
             }
         </>
