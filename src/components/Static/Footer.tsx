@@ -11,22 +11,22 @@ function Footer() {
                         <div className="flex items-center mb-4">
                             <img src="./utma.png" className="w-10 h-10" alt="UTMA Logo" /> {/* logo image */}
                             <div className="ml-4 text-white">
-                                <div className="text-xl font-bold"> UNIVERSIDAD TECNOLOGICA METROPOLITNA DE AGUASCALIENTES</div>
+                                <div className="text-xl font-bold"> UNIVERSIDAD TECNOLOGICA METROPOLITANA DE AGUASCALIENTES</div>
                             </div>
                         </div>
                     </div>
                     {/* COLUMNA CON INFORMACIÓN DE CONTACTO */}
                     <div className="w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0">
-                        <p className="mb-2">
+                        <div className="mb-2">
                             <i className="fas fa-phone mr-2"></i>
                             <span className="font-semibold">Dirección:</span>
-                            <p>Av. Gerónimo de la Cueva s/n, Villas del Río, 20126 Aguascalientes, Ags.</p> {/* address */}
-                        </p>
-                        <p>
+                            <div>Av. Gerónimo de la Cueva s/n, Villas del Río, 20126 Aguascalientes, Ags.</div> {/* address */}
+                        </div>
+                        <div>
                             <i className="fas fa-print mr-2"></i>
                             <span className="font-semibold">Teléfono:</span>
-                            <p>449 925 3920</p> {/* phone number */}
-                        </p>
+                            <div>449 925 3920</div> {/* phone number */}
+                        </div>
                     </div>
                 </div>
                 <hr className="my-6 border-gray-700" />
