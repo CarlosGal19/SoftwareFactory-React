@@ -17,7 +17,7 @@ const Register: FC = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [birthDate, setBirthDate] = useState('');
-  const [genre, setGenre] = useState('');
+  const [gender, setGender] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
@@ -26,7 +26,7 @@ const Register: FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if ([name, lastName, userName, email, birthDate, genre, major, password, repeatPassword].includes('')) {
+    if ([name, lastName, userName, email, birthDate, gender, major, password, repeatPassword].includes('')) {
       setAlert({ type: 'alert', msg: 'All fields are required' });
       return;
     }
@@ -43,7 +43,7 @@ const Register: FC = () => {
         user_name: userName,
         email: email.toLowerCase(),
         birth_date: birthDate,
-        genre,
+        gender,
         major_id: major,
         password,
       });
@@ -53,7 +53,7 @@ const Register: FC = () => {
       setUserName('');
       setEmail('');
       setBirthDate('');
-      setGenre('');
+      setGender('');
       setPassword('');
       setRepeatPassword('');
       setAlert({
@@ -129,12 +129,12 @@ const Register: FC = () => {
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="genre" className="block text-sm font-medium text-gray-700">Gender</label>
+            <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
             <select
-              name="genre"
-              id="genre"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
+              name="gender"
+              id="gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
               className="mt-1 p-3 w-full border border-gray-300 rounded-md"
             >
               <option value="">Select Gender</option>
