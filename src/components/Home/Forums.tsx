@@ -40,7 +40,7 @@ const Forums: FC = () => {
         <>
             {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
             <div className='mt-16 w-1/6 hidden md:block bg-teal-500'>
-                <h2 className='text-4xl font-bold text-center mt-4'>Forums</h2>
+                <h2 className='text-5xl font-bold text-center mt-4'>Forums</h2>
                 {
                     forums.map(forum => (
                         <Forum key={forum.id} forum={forum} />
