@@ -21,6 +21,7 @@ const Settings: FC = () => {
     const [user, setUser] = useState<User>({} as User);
     const [major, setMajor] = useState({ name: '', description: '' });
     const [alert, setAlert] = useState({ msg: '', type: '' });
+    const [edit, setEdit] = useState<boolean>(false);
 
     const jwt = localStorage.getItem('jwt');
 
@@ -41,6 +42,30 @@ const Settings: FC = () => {
         }
         fetchProfile();
     }, [jwt]);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const name = (e.currentTarget.name as unknown as HTMLInputElement).value;
+        const last_name = (e.currentTarget.last_name as HTMLInputElement).value;
+        const user_name = (e.currentTarget.user_name as HTMLInputElement).value;
+        try {
+            const response = await axiosClient.patch('users/update', {
+                name,
+                last_name,
+                user_name
+            }, {
+                headers: {
+                    Authorization: `Bearer ${jwt}`
+                }
+            });
+            setUser(response.data.user);
+            setAlert({ msg: response.data.message, type: 'success' });
+            setEdit(false);
+        } catch (error: any) {
+            setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
+        }
+
+    }
 
     return (
         <>
@@ -63,6 +88,33 @@ const Settings: FC = () => {
                                 <p><span className="font-semibold">Birth Date:</span> {user.birth_date}</p>
                             </div>
                         </div>
+                    </div>
+                    {
+                        edit && (
+                            <>
+                                <form onSubmit={handleSubmit}>
+                                    {/* Form to edit username, name and last name */}
+                                    <div className="flex flex-col space-y-4">
+                                        <label htmlFor="name" className="text-xl font-semibold">Name</label>
+                                        <input type="text" name="name" id="name" className="border border-gray-300 rounded-lg p-2" />
+                                    </div>
+                                    <div className="flex flex-col space-y-4">
+                                        <label htmlFor="last_name" className="text-xl font-semibold">Last Name</label>
+                                        <input type="text" name="last_name" id="last_name" className="border border-gray-300 rounded-lg p-2" />
+                                    </div>
+                                    <div className="flex flex-col space-y-4">
+                                        <label htmlFor="user_name" className="text-xl font-semibold">Username</label>
+                                        <input type="text" name="user_name" id="user_name" className="border border-gray-300 rounded-lg p-2" />
+                                    </div>
+                                    <div className="flex justify-center my-8">
+                                        <button className="bg-gray-800 rounded-xl text-xl p-2 font-bold hover:bg-gray-950 text-white">Save</button>
+                                    </div>
+                                </form>
+                            </>
+                        )
+                    }
+                    <div className="flex justify-center my-8">
+                        <button className="bg-gray-800 rounded-xl text-xl p-2 font-bold hover:bg-gray-950 text-white" onClick={() => setEdit(prev => !prev)}>Edit profile</button>
                     </div>
                 </div>
             )}
