@@ -30,16 +30,10 @@ export function Header() {
                     <div className="hidden md:flex md:items-center md:space-x-4" id="navbarsExampleDefault">
                         <ul className="flex space-x-4">
                             <li className="nav-item"><Link to="/profile" className="text-gray-300 hover:text-white">My Account</Link></li>
+                            <li className="nav-item"><Link to="/friend-requests" className="text-gray-300 hover:text-white">Friend requests</Link></li>
+                            <li className="nav-item"><Link to="/chats" className="text-gray-300 hover:text-white">Chats</Link></li>
                             <li className="nav-item relative">
                                 <Link to='/settings' className="text-gray-300 hover:text-white cursor-pointer" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</Link>
-                                {/* <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20">
-                                    <h6 className="block px-4 py-2 text-sm text-gray-700">Seguridad y Privacidad</h6>
-                                    <Link to="/password" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cambiar mi contraseña</Link>
-                                    <Link to="/privacy" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Privacidad</Link>
-                                    <div className="border-t my-2"></div>
-                                    <h6 className="block px-4 py-2 text-sm text-gray-700">Soporte y Ayuda</h6>
-                                    <Link to="/help" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Centro de ayuda</Link>
-                                </div> */}
                             </li>
                             <li className="nav-item text-gray-300 hover:text-white hover:cursor-pointer" onClick={handleClick}>Sign out</li>
                         </ul>
