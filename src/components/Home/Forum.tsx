@@ -18,9 +18,8 @@ const Forum: FC<{ forum: OneForum }> = ({ forum }) => {
         <>
             <div onClick={() => {
                 navigate(`/forum/${forum.id}`)
-            }} key={forum.id} className="p-4 bg-teal-500 shadow-lg text-center hover:shadow-blue-200 hover:cursor-pointer">
-                <h1 className="text-lg font-bold text-gray-800">{forum.name}</h1>
-                <p className="text-gray-700 text-sm">{forum.description}</p>
+            }} key={forum.id} className="m-2 p-4 bg-teal-500 shadow-lg text-center hover:shadow-blue-50 hover:cursor-pointer">
+                <h1 className="text-sm font-arial text-gray-800">{forum.name}</h1>
             </div>
         </>
     )
