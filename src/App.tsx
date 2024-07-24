@@ -13,6 +13,8 @@ import Profile from './pages/Protect/Profile';
 import Settings from './pages/Protect/Settings'
 import Forum from "./pages/Protect/Forum";
 import Topic from "./pages/Protect/Topic";
+import Chats from "./pages/Protect/Chats";
+import FriendRequests from "./pages/Protect/FriendRequests";
 
 function App() {
 
@@ -28,6 +30,15 @@ function App() {
                 <Route path='forget-password' element={<ForgetPassword />} />
                 <Route path='forget-password/:token' element={<NewPassword />} />
                 <Route path='confirm-account/:id' element={<ConfirmAccount />} />
+              </Route>
+              <Route path="/home" element={<ProtectedRoute />}>
+                <Route index element={<Home />} />
+              </Route>
+              <Route path="/chats" element={<ProtectedRoute />}>
+                <Route index element={<Chats />} />
+              </Route>
+              <Route path="/friend-requests" element={<ProtectedRoute />}>
+                <Route index element={<FriendRequests />} />
               </Route>
               <Route path="/home" element={<ProtectedRoute />}>
                 <Route index element={<Home />} />
