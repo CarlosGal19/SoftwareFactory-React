@@ -129,10 +129,10 @@ const Register: FC = () => {
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
+            <label htmlFor="genre" className="block text-sm font-medium text-gray-700">Gender</label>
             <select
-              name="gender"
-              id="gender"
+              name="genre"
+              id="genre"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
               className="mt-1 p-3 w-full border border-gray-300 rounded-md"
