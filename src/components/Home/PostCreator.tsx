@@ -34,4 +34,3 @@ const PostCreator: FC<{ id: number }> = ({ id }) => {
 }
 
 export default PostCreator
-
