@@ -29,11 +29,11 @@ export function Header() {
                     </div>
                     <div className="hidden md:flex md:items-center md:space-x-4" id="navbarsExampleDefault">
                         <ul className="flex space-x-4">
-                            <li className="nav-item"><Link to="/profile" className="text-gray-300 hover:text-white">My Account</Link></li>
+                            <li className="nav-item"><Link to="/profile" className="text-gray-300 hover:text-white">Profile</Link></li>
                             <li className="nav-item"><Link to="/friend-requests" className="text-gray-300 hover:text-white">Friend requests</Link></li>
                             <li className="nav-item"><Link to="/chats" className="text-gray-300 hover:text-white">Chats</Link></li>
                             <li className="nav-item relative">
-                                <Link to='/settings' className="text-gray-300 hover:text-white cursor-pointer" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</Link>
+                                <Link to='/settings' className="text-gray-300 hover:text-white cursor-pointer" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</Link>
                             </li>
                             <li className="nav-item text-gray-300 hover:text-white hover:cursor-pointer" onClick={handleClick}>Sign out</li>
                         </ul>
