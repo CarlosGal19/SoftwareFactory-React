@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react"
 import Friend from "./Friend"
 import axiosClient from "../../config/axios"
 
-type Friend = {
+type FriendType = {
   id: number,
   name: string,
   last_name: string,
@@ -12,7 +12,7 @@ type Friend = {
 
 const Friends: FC = () => {
 
-  const [friends, setFriends] = useState<Friend[]>([]);
+  const [friends, setFriends] = useState<FriendType[]>([]);
 
   const jwt = localStorage.getItem('jwt');
 
