@@ -36,7 +36,7 @@ const Login: FC = () => {
   return (
     <div className="shadow-lg px-5 py-10 rounded-xl bg-white">
       <div className='flex justify-center mb-6'>
-        <img src="./utma.png" alt="UTMA LOGO" />
+        <img src="./UTMA.png" alt="UTMA LOGO" />
       </div>
       {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
       <form onSubmit={handleSubmit}>

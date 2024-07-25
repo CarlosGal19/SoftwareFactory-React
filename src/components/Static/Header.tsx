@@ -16,7 +16,7 @@ export function Header() {
                     <div className="flex items-center">
                         <Link to="/home">
                             <div className="flex items-center border border-gray-600 p-1 rounded-md">
-                                <img src="./utma.png" className="w-8" alt="Logotype" />
+                                <img src="./UTMA.png" className="w-8" alt="Logotype" />
                             </div>
                         </Link>
                     </div>
