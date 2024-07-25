@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useState, useEffect } from "react";
 import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
-import Friends from "../../components/Profile/Friends";
+import Friends from "../../components/Home/Friends";
 import Posts from "../../components/Profile/Posts";
 
 type User = {
