@@ -2,6 +2,8 @@ import { FC } from "react";
 import { useState, useEffect } from "react";
 import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
+import Friends from "../../components/Profile/Friends";
+import Posts from "../../components/Profile/Posts";
 
 type User = {
   id: number;
@@ -60,7 +62,9 @@ const Profile: FC = () => {
                 <p><span className="font-semibold">Birth Date:</span> {user.birth_date}</p>
               </div>
             </div>
+            <Friends />
           </div>
+          <Posts />
         </div>
       )}
     </>
