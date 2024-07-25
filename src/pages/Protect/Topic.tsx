@@ -3,7 +3,7 @@ import axiosClient from "../../config/axios";
 import { useParams } from "react-router-dom";
 import Alert from "../../components/Static/Alert";
 import Post from "../../components/Topic/Post";
-import CreatePost from "../../components/Topic/createPost";
+import CreatePost from "../../components/Topic/CreatePost";
 
 type OnePost = {
     id: number;
@@ -44,11 +44,11 @@ const Topic: FC = () => {
             <div className="container mx-auto mt-16 p-6 bg-gray-100 rounded-md shadow-md">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-4 border-b border-gray-300 pb-2">{name}</h2>
             </div>
-    
+
             <div className="container mx-auto my-8 p-6 bg-white shadow-md rounded-md w-1/3">
                 <CreatePost topicId={id!} />
             </div>
-    
+
             <div className="container mx-auto my-8 p-6 bg-gray-100 shadow-md rounded-md">
                 {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
                 <div className="space-y-8">
