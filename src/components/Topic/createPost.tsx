@@ -129,4 +129,5 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
 	);
 };
 
+
 export default CreatePost;
