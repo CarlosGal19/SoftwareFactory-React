@@ -3,7 +3,7 @@ import axiosClient from "../../config/axios";
 import { useParams } from "react-router-dom";
 import Alert from "../../components/Static/Alert";
 import Post from "../../components/Topic/Post";
-import CreatePost from "../../components/Topic/createPost";
+import CreatePost from "../../components/Topic/CreatePost";
 
 type OnePost = {
     id: number;
