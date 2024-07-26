@@ -24,6 +24,7 @@ const Friends: FC = () => {
             Authorization: `Bearer ${jwt}`
           }
         });
+        console.log(response.data.friends);
         setFriends(response.data.friends);
       } catch (error: any) {
         console.log(error.response.data.message || 'An error occurred');
@@ -36,13 +37,18 @@ const Friends: FC = () => {
     <>
       <div className="mt-16 w-auto hidden md:block">
         <h1 className='text-center font-bold text-4xl mt-4'>Friends list</h1>
-        <div className="shadow-xl w-5/6 m-auto grid md:grid-cols-3 gap-8">
-          {
-            friends.map(friend => (
-              <Friend key={friend.id} friend={friend} />
-            ))
-          }
-        </div>
+        {
+          friends.length === 0 ? <p className='text-center mt-4'>You don't have friends yet</p> : (
+            <div className="shadow-xl w-5/6 m-auto grid md:grid-cols-3 gap-8">
+              {
+                friends.map(friend => (
+                  <Friend key={friend.id} friend={friend} />
+                ))
+              }
+            </div>
+          )
+        }
+
       </div>
     </>
   )
