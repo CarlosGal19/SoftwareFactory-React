@@ -18,7 +18,7 @@ const Topic: FC<{ topic: Topic }> = ({ topic }) => {
 
     return (
         <>
-            <div key={topic.id} className="bg-gray-100 p-4 my-4 rounded-lg hover:shadow-blue-200 hover:cursor-pointer shadow-lg" onClick={() => {
+            <div key={topic.id} className="bg-gray-100 p-3 my-4 rounded-xl hover:shadow-sky-300 hover:cursor-pointer shadow-xl" onClick={() => {
                 navigate(`/topic/${topic.name}/${topic.id}`)
             }}>
                 <h2 className="text-2xl font-bold text-gray-800">{topic.name}</h2>

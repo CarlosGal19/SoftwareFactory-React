@@ -14,7 +14,7 @@ type Post = {
 
 const Post: FC<{ post: Post }> = ({ post }) => {
   return (
-    <div key={post.id} className="bg-white p-8 my-8 rounded-xl shadow-lg w-full max-w-2xl mx-auto border-t-4 border-blue-500 transition-transform duration-300 hover:scale-105">
+    <div key={post.id} className="bg-white p-8 my-8 rounded-xl shadow-lg w-full max-w-2xl mx-auto border-t-4 border-sky-500 transition-transform duration-300 hover:scale-105">
       <h2 className="text-3xl font-extrabold text-gray-900 mb-6 text-center">{post.title}</h2>
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
