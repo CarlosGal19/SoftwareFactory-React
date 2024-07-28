@@ -19,7 +19,6 @@ type OnePost = {
 const Topic: FC = () => {
     const [posts, setPosts] = useState<OnePost[]>([]);
     const [alert, setAlert] = useState({ type: '', msg: '' });
-
     const { id, name } = useParams();
     const jwt = localStorage.getItem('jwt');
 
@@ -41,17 +40,17 @@ const Topic: FC = () => {
 
     return (
         <>
-            <div className="container mx-auto mt-16 p-6 bg-gray-100 rounded-md shadow-md">
-                <h2 className="text-3xl font-semibold text-center text-gray-800 mb-4 border-b border-gray-300 pb-2">{name}</h2>
+            <div className="md:container md:mx-auto mt-16 p-2 bg-gray-100 rounded-md shadow-md">
+                <h2 className="text-3xl font-semibold text-center text-gray-800 mb-4 border-b border-gray-400 pb-2">{name}</h2>
             </div>
 
-            <div className="container mx-auto my-8 p-6 bg-white shadow-md rounded-md w-1/3">
+            <div className="md:container md:mx-auto flex flex-nowrap my-8 p-6 bg-cyan-500 shadow-md rounded-md w-1/3">
                 <CreatePost topicId={id!} />
             </div>
 
-            <div className="container mx-auto my-8 p-6 bg-gray-100 shadow-md rounded-md">
+            <div className="md:container md:mx-auto my-8 p-1 bg-gray-100 shadow-md rounded-md">
                 {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
-                <div className="space-y-8">
+                <div className="space-y-1">
                     {posts && posts.map((post: OnePost) => (
                         <Post key={post.id} post={post} />
                     ))}

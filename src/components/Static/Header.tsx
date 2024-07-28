@@ -11,7 +11,7 @@ export function Header() {
 
     return (
         <header>
-            <nav className="bg-gray-800 fixed top-0 w-full z-10 shadow-md">
+            <nav className="bg-sky-950 fixed top-0 w-full z-10 shadow-md">
                 <div className="flex items-center justify-between px-4 py-3 md:px-8 lg:px-12">
                     <div className="flex items-center">
                         <Link to="/home">
