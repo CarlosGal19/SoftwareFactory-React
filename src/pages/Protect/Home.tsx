@@ -1,6 +1,6 @@
 import Forums from '../../components/Home/Forums';
 import Posts from '../../components/Home/Posts';
-import Friends from '../../components/Home/Friends';
+import FriendSuggestion from '../../components/Home/FriendSuggestion';
 
 const Home = () => {
 
@@ -12,7 +12,7 @@ const Home = () => {
           <h2 className='text-5xl font-bold mt-2'>Welcome to most recent UTMA info</h2>
           <Posts />
         </div>
-        <Friends />
+        <FriendSuggestion />
     </div>
     </>
 
