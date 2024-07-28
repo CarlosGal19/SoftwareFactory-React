@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react"
-import Friend from "./Friend"
+import Friend from "../Home/Friend"
 import axiosClient from "../../config/axios"
 
 type FriendType = {

@@ -9,7 +9,11 @@ function Footer() {
                     {/* COLUMNA CON LOGOTIPO Y TEXTO DEL PIE DE PÁGINA */}
                     <div className="w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0">
                         <div className="flex items-center mb-4">
+<<<<<<< Updated upstream
                             <img src="./utma.png" className="w-10 h-10" alt="UTMA Logo" /> {/* logo image */}
+=======
+                            <img src="./UTMA.png" className="w-10 h-10" alt="UTMA Logo" /> {/* logo image */}
+>>>>>>> Stashed changes
                             <div className="ml-4 text-white">
                                 <div className="text-xl font-bold"> UNIVERSIDAD TECNOLOGICA METROPOLITANA DE AGUASCALIENTES</div>
                             </div>
