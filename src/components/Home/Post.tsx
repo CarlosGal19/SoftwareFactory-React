@@ -18,7 +18,9 @@ const Post: FC<{ post: Post }> = ({ post }) => {
             <PostCreator id={post.creator_id} />
             <h2 className="text-4xl font-bold my-4">{post.title}</h2>
             <h3 className="text-2xl my-2">{post.content}</h3>
-            <img src={post.url_img} alt="Post Image" className="m-auto" />
+            {
+                post.url_img && <img src={post.url_img} alt="Post Image" className="m-auto" />
+            }
             <h3 className="text-xl font-semibold my-2 text-left">{post.created_at}</h3>
         </li>
     )
