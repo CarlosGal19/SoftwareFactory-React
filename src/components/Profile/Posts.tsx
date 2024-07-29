@@ -38,12 +38,14 @@ const Posts: FC = () => {
 
     return (
         <>
-            {
-                posts && posts.map(post => (
-                    <UserPost key={post.id} post={post} />
-                )
-                )
-            }
+            <ul>
+                {
+                    posts && posts.map(post => (
+                        <UserPost key={post.id} post={post} />
+                    )
+                    )
+                }
+            </ul>
         </>
     )
 }
