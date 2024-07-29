@@ -14,7 +14,7 @@ type Post = {
 
 const Post: FC<{ post: Post }> = ({ post }) => {
     return (
-        <li key={post.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center w-5/6 m-auto">
+        <li key={post.id} className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center w-5/6 m-auto list-none">
             <PostCreator id={post.creator_id} />
             <h2 className="text-4xl font-bold my-4">{post.title}</h2>
             <h3 className="text-2xl my-2">{post.content}</h3>
