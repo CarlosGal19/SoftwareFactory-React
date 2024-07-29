@@ -13,7 +13,7 @@ const Home = () => {
           <Posts />
         </div>
         <FriendSuggestion />
-    </div>
+      </div>
     </>
 
   )

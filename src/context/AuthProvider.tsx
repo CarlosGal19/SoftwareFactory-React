@@ -39,7 +39,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   useEffect(() => {
-      const jwt = localStorage.getItem("jwt");
+    const jwt = localStorage.getItem("jwt");
     if (jwt) {
       login(jwt);
       navigate("/home");

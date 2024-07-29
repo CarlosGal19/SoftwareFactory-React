@@ -13,7 +13,7 @@ type Post = {
     updated_at: string;
 }
 
-const Posts:FC = () => {
+const Posts: FC = () => {
 
     const [posts, setPosts] = useState<Post[]>([]);
 
@@ -36,16 +36,16 @@ const Posts:FC = () => {
     }, [jwt]);
 
 
-  return (
-    <>
-        {
-            posts && posts.map(post => (
-                <UserPost key={post.id} post={post} />
-            )
-        )
-        }
-    </>
-  )
+    return (
+        <>
+            {
+                posts && posts.map(post => (
+                    <UserPost key={post.id} post={post} />
+                )
+                )
+            }
+        </>
+    )
 }
 
 export default Posts

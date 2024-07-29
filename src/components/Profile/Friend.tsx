@@ -8,7 +8,7 @@ type Friend = {
   user_name: string,
 }
 
-const Friend: FC<({friend: Friend})> = ({friend}) => {
+const Friend: FC<({ friend: Friend })> = ({ friend }) => {
   return (
     <>
       <div className="flex flex-col items-center shadow-md rounded-lg p-4">

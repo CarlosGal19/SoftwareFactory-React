@@ -30,9 +30,9 @@ const Settings: FC = () => {
             try {
                 const response = await axiosClient.get('majors/me', {
                     headers: {
-                      Authorization: `Bearer ${jwt}`
+                        Authorization: `Bearer ${jwt}`
                     }
-                  });
+                });
                 setUser(response.data.user);
                 setMajor(response.data.major);
                 setAlert({ msg: '', type: '' });

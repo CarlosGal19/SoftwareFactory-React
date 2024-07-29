@@ -24,7 +24,7 @@ const Forum: FC = () => {
     useEffect(() => {
         const getForum = async () => {
             try {
-                const response = await axiosClient.get(`forums/${id}`,{
+                const response = await axiosClient.get(`forums/${id}`, {
                     headers: {
                         Authorization: `Bearer ${jwt}`
                     }
@@ -40,15 +40,15 @@ const Forum: FC = () => {
 
     return (
         <>
-        {
-            alert.msg && <Alert msg={alert.msg} type={alert.type} />
-        }
+            {
+                alert.msg && <Alert msg={alert.msg} type={alert.type} />
+            }
             <div className="w-3/4 mx-auto mt-24">
                 <div className="bg-white p-8 shadow-lg rounded-lg">
                     <h1 className="text-6xl font-bold text-gray-800 my-8">{forum?.name}</h1>
                     <p className="text-gray-700 mb-12">{forum?.description}</p>
                     <div>
-                        <Topics id={forum?.id?.toString() ?? ''}/>
+                        <Topics id={forum?.id?.toString() ?? ''} />
                     </div>
                 </div>
             </div>
