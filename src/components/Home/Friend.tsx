@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import axiosClient from "../../config/axios";
 
 type User = {
@@ -10,8 +10,6 @@ type User = {
 
 const Friend: FC<{ friend: User }> = ({ friend }) => {
 
-  const [sent, setSent] = useState<boolean>(false);
-
   const jwt = localStorage.getItem('jwt');
 
   const handleClick = async () => {
@@ -22,7 +20,6 @@ const Friend: FC<{ friend: User }> = ({ friend }) => {
         },
       });
       console.log(response.data);
-      setSent(true);
     } catch (error: any) {
       console.log(error.message);
     }
