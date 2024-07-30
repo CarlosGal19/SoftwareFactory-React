@@ -15,6 +15,8 @@ import Forum from "./pages/Protect/Forum";
 import Topic from "./pages/Protect/Topic";
 import Chats from "./pages/Protect/Chats";
 import FriendRequests from "./pages/Protect/FriendRequests";
+import AdminLogin from "./pages/Admin/Login"
+import AdminHome from "./pages/Admin/Home"
 
 function App() {
 
@@ -54,6 +56,12 @@ function App() {
               </Route>
               <Route path="/topic/:name/:id" element={<ProtectedRoute />}>
                 <Route index element={<Topic />} />
+              </Route>
+              <Route path="/admin" element={<AuthLayout />}>
+                <Route index element={<AdminLogin />} />
+              </Route>
+              <Route path="/admin/home" element={<ProtectedRoute />}>
+                <Route index element={<AdminHome />} />
               </Route>
             </Routes>
           </AuthProvider>
