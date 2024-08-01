@@ -43,9 +43,6 @@ function App() {
               <Route path="/friend-requests" element={<ProtectedRoute />}>
                 <Route index element={<FriendRequests />} />
               </Route>
-              <Route path="/home" element={<ProtectedRoute />}>
-                <Route index element={<Home />} />
-              </Route>
               <Route path="/profile" element={<ProtectedRoute />}>
                 <Route index element={<Profile />} />
               </Route>

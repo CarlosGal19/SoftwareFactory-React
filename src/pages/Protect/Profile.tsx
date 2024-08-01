@@ -48,7 +48,7 @@ const Profile: FC = () => {
     <>
       {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
       {user.id && (
-        <div className="mt-24 p-8 w-5/6 mx-auto bg-white rounded-lg shadow-lg grid md:grid-cols-2 gap-8">
+        <div className="mt-8 p-8 w-5/6 mx-auto bg-white rounded-lg shadow-lg grid md:grid-cols-2 gap-8">
           <div>
             <div className="flex flex-col items-center">
               <img src={user.profile_photo || './user.svg'} alt="Profile" className="w-48 h-48 rounded-full object-cover mb-4 shadow-md" />

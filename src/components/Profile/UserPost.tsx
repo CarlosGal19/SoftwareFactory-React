@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
+import Alert from "../../components/Static/Alert";
 
 type Post = {
     id: number;
@@ -14,13 +15,15 @@ type Post = {
 
 type UserPostProps = {
     post: Post;
+    onPostUpdated: () => void; // Prop to notify parent component about updates
 };
 
-const UserPost: FC<UserPostProps> = ({ post }) => {
+const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(post.title);
     const [content, setContent] = useState(post.content);
     const [urlImg, setUrlImg] = useState(post.url_img);
+    const [alert, setAlert] = useState({ msg: '', type: '' });
     const jwt = localStorage.getItem('jwt');
 
     const handleSave = async () => {
@@ -34,9 +37,12 @@ const UserPost: FC<UserPostProps> = ({ post }) => {
                     Authorization: `Bearer ${jwt}`
                 }
             });
+            setAlert({ msg: 'Post edited successfully!', type: 'success' });
             setIsEditing(false);
+            onPostUpdated(); // Notify parent component
         } catch (error) {
             console.error("Failed to update post:", error);
+            setAlert({ msg: 'Failed to update post.', type: 'error' });
         }
     };
 
@@ -47,14 +53,17 @@ const UserPost: FC<UserPostProps> = ({ post }) => {
                     Authorization: `Bearer ${jwt}`
                 }
             });
-            //codigo necesario para eliminar post desde perfil
+            setAlert({ msg: 'Post deleted successfully!', type: 'success' });
+            onPostUpdated(); // Notify parent component
         } catch (error) {
             console.error("Failed to delete post:", error);
+            setAlert({ msg: 'Failed to delete post.', type: 'error' });
         }
     };
 
     return (
         <li className="mt-4 p-4 bg-white shadow-lg rounded-lg text-center w-5/6 m-auto list-none">
+            {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
             {isEditing ? (
                 <div className="bg-white p-4 rounded-lg shadow-md">
                     <input
