@@ -1,3 +1,5 @@
+// src/components/Topic/CreatePost.tsx
+
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axiosClient from '../../config/axios';
 
@@ -55,13 +57,12 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
     <>
       {!showForm ? (
         <div className="flex justify-center py-4">
-          <input
-            type="text"
-            placeholder="Create a new post"
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded-full shadow-md cursor-pointer w-80 transition ease-in-out duration-200 transform hover:scale-105"
+          <button
             onClick={() => setShowForm(true)}
-            readOnly
-          />
+            className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md w-80 transition ease-in-out duration-200 transform hover:scale-105"
+          >
+            Create a new post
+          </button>
         </div>
       ) : (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
@@ -102,7 +103,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
+                className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
               >
                 {isSubmitting ? 'Creating...' : 'Create post'}
               </button>
