@@ -20,7 +20,7 @@ const EditPostForm: FC<EditPostFormProps> = ({ post, onSave, onCancel }) => {
 
     const handleSave = async () => {
         try {
-            await axiosClient.put(`/posts/${post.id}`, {
+            await axiosClient.patch(`/posts/${post.id}`, {
                 title,
                 content,
                 url_img: urlImg
