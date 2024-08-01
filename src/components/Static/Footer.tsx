@@ -9,7 +9,7 @@ function Footer() {
                     {/* COLUMNA CON LOGOTIPO Y TEXTO DEL PIE DE PÁGINA */}
                     <div className="w-full md:w-1/2 lg:w-1/3 mb-4 md:mb-0">
                         <div className="flex items-center mb-4">
-                            <img src="public/UTMA.png" className="w-10 h-10" alt="UTMA Logo" /> {/* logo image */}
+                            <img src="UTMA.png" className="w-10 h-10" alt="UTMA Logo" /> {/* logo image */}
                             <div className="ml-4 text-white">
                                 <div className="text-xl font-bold"> UNIVERSIDAD TECNOLOGICA METROPOLITANA DE AGUASCALIENTES</div>
                             </div>
@@ -38,22 +38,22 @@ function Footer() {
                     <ul className="flex space-x-4">
                         <li>
                             <Link to="https://utma.edu.mx" target="blank">
-                                <img className="w-7.5 h-8" src="public/UTMA.png" alt="UTMA" /> {/* UTMA logo link */}
+                                <img className="w-7.5 h-8" src="UTMA.png" alt="UTMA" /> {/* UTMA logo link */}
                             </Link>
                         </li>
                         <li>
                             <Link to="https://www.facebook.com/UTMABiS/?locale=es_LA" target="blank">
-                                <img className="w-7 h-7" src="public/facebook.svg" alt="Facebook" /> {/* Facebook link */}
+                                <img className="w-7 h-7" src="facebook.svg" alt="Facebook" /> {/* Facebook link */}
                             </Link>
                         </li>
                         <li>
                             <Link to="https://www.tiktok.com/@utmetropolitana" target="blank">
-                                <img className="w-7 h-7" src="public/tiktok.svg" alt="TikTok" /> {/* TikTok link */}
+                                <img className="w-7 h-7" src="tiktok.svg" alt="TikTok" /> {/* TikTok link */}
                             </Link>
                         </li>
                         <li>
                             <Link to="/" target="blank">
-                                <img className="w-7 h-7" src="public/whatsapp.svg" alt="WhatsApp" /> {/* WhatsApp link */}
+                                <img className="w-7 h-7" src="whatsapp.svg" alt="WhatsApp" /> {/* WhatsApp link */}
                             </Link>
                         </li>
                     </ul>

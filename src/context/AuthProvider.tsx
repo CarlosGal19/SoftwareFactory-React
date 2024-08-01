@@ -57,26 +57,26 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
           const decoded: Decoded = jwtDecode(token);
           if (decoded.exp * 1000 > Date.now()) {
             stateLogin();
-            if (location.pathname === "/login") {
+            if (location.pathname === "/") {
               navigate("/home");
             }
           } else {
             logout();
-            if (location.pathname !== "/login") {
-              navigate("/login");
+            if (location.pathname !== "/") {
+              navigate("/");
             }
           }
         } catch (error) {
           logout();
-          if (location.pathname !== "/login") {
-            navigate("/login");
+          if (location.pathname !== "/") {
+            navigate("/");
           }
           console.log(error);
         }
       } else {
         logout();
-        if (location.pathname !== "/login") {
-          navigate("/login");
+        if (location.pathname !== "/") {
+          navigate("/");
         }
       }
       setLoading(false); // Termina la carga
