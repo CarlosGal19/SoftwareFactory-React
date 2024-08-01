@@ -1,5 +1,3 @@
-// src/components/Topic/CreatePost.tsx
-
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axiosClient from '../../config/axios';
 
@@ -11,9 +9,10 @@ interface FormData {
 
 interface CreatePostProps {
   topicId: string;
+  onPostCreated: () => void;
 }
 
-const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
+const CreatePost: React.FC<CreatePostProps> = ({ topicId, onPostCreated }) => {
   const [formData, setFormData] = useState<FormData>({ title: '', content: '', url_img: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -46,6 +45,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
       setFormData({ title: '', content: '', url_img: '' });
       setShowForm(false);
       setShowSuccessAlert(true);
+      onPostCreated(); // Llama a la función para actualizar la lista de posts
     } catch (error: any) {
       console.error('Error while creating the post:', error.response.data.message || 'Unknown error');
     } finally {
@@ -57,15 +57,16 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
     <>
       {!showForm ? (
         <div className="flex justify-center py-4">
-          <button
+          <input
+            type="text"
+            placeholder="Create a new post"
+            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded-full shadow-md cursor-pointer w-80 transition ease-in-out duration-200 transform hover:scale-105"
             onClick={() => setShowForm(true)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md w-80 transition ease-in-out duration-200 transform hover:scale-105"
-          >
-            Create a new post
-          </button>
+            readOnly
+          />
         </div>
       ) : (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-lg">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Create a new post</h2>
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -103,7 +104,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
+                className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
               >
                 {isSubmitting ? 'Creating...' : 'Create post'}
               </button>

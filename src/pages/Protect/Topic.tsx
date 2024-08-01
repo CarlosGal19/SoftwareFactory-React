@@ -22,33 +22,34 @@ const Topic: FC = () => {
   const { id, name } = useParams();
   const jwt = localStorage.getItem('jwt');
 
+  const fetchPosts = async () => {
+    try {
+      const response = await axiosClient.get(`posts/all/${id}`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      setPosts(response.data.posts);
+    } catch (error: any) {
+      setAlert({ msg: error.response.data.message, type: 'alert' });
+    }
+  };
+
   useEffect(() => {
-    const fetchTopic = async () => {
-      try {
-        const response = await axiosClient.get(`posts/all/${id}`, {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        });
-        setPosts(response.data.posts);
-      } catch (error: any) {
-        setAlert({ msg: error.response.data.message, type: 'alert' });
-      }
-    };
-    fetchTopic();
+    fetchPosts();
   }, [jwt, id]);
 
   return (
     <>
-      <div className="container mx-auto mt-16 p-4 bg-gray-100 rounded-md shadow-md">
+      <div className="md:container md:mx-auto mt-16 p-2 bg-gray-100 rounded-md shadow-md">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-4 border-b border-gray-400 pb-2">{name}</h2>
       </div>
 
-      <div className="container mx-auto flex justify-center my-8 p-6 bg-gray-100 shadow-md rounded-md">
-        <CreatePost topicId={id!} />
+      <div className="md:container md:mx-auto flex justify-center my-8 p-6 bg-cyan-500 shadow-md rounded-md">
+        <CreatePost topicId={id!} onPostCreated={fetchPosts} />
       </div>
 
-      <div className="container mx-auto my-8 p-6 bg-white shadow-md rounded-md">
+      <div className="md:container md:mx-auto my-8 p-1 bg-gray-100 shadow-md rounded-md">
         {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
         <div className="space-y-6">
           {posts && posts.map((post: OnePost) => (
