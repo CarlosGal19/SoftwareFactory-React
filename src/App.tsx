@@ -17,6 +17,7 @@ import Chats from "./pages/Protect/Chats";
 import FriendRequests from "./pages/Protect/FriendRequests";
 import AdminLogin from "./pages/Admin/Login"
 import AdminHome from "./pages/Admin/Home"
+import AdminLayout from "./layout/AdminLayout";
 
 function App() {
 
@@ -60,7 +61,7 @@ function App() {
               <Route path="/admin" element={<AuthLayout />}>
                 <Route index element={<AdminLogin />} />
               </Route>
-              <Route path="/admin/home" element={<ProtectedRoute />}>
+              <Route path="/admin/home" element={<AdminLayout />}>
                 <Route index element={<AdminHome />} />
               </Route>
             </Routes>
