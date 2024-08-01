@@ -60,13 +60,13 @@ const CreatePost: React.FC<CreatePostProps> = ({ topicId, onPostCreated }) => {
           <input
             type="text"
             placeholder="Create a new post"
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded-full shadow-md cursor-pointer w-80 transition ease-in-out duration-200 transform hover:scale-105"
+            className="bg-white hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 border border-gray-300 rounded-full shadow-md cursor-pointer w-80 transition ease-in-out duration-200 transform hover:scale-105"
             onClick={() => setShowForm(true)}
             readOnly
           />
         </div>
       ) : (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-grey-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-lg">
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Create a new post</h2>
             <form onSubmit={handleSubmit} className="space-y-5">
