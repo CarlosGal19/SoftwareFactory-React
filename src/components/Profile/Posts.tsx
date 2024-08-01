@@ -1,6 +1,6 @@
-import axiosClient from "../../config/axios"
-import { FC, useEffect, useState } from "react"
-import UserPost from "../Home/Post"
+import axiosClient from "../../config/axios";
+import { FC, useEffect, useState } from "react";
+import UserPost from "./UserPost";
 
 type Post = {
     id: number;
@@ -11,12 +11,10 @@ type Post = {
     url_img: string;
     created_at: string;
     updated_at: string;
-}
+};
 
 const Posts: FC = () => {
-
     const [posts, setPosts] = useState<Post[]>([]);
-
     const jwt = localStorage.getItem('jwt');
 
     useEffect(() => {
@@ -31,23 +29,19 @@ const Posts: FC = () => {
             } catch (error: any) {
                 console.log(error.response.data.message || 'An error occurred');
             }
-        }
+        };
         fetchPosts();
     }, [jwt]);
-
 
     return (
         <>
             <ul>
-                {
-                    posts && posts.map(post => (
-                        <UserPost key={post.id} post={post} />
-                    )
-                    )
-                }
+                {posts && posts.map(post => (
+                    <UserPost key={post.id} post={post} />
+                ))}
             </ul>
         </>
-    )
-}
+    );
+};
 
-export default Posts
+export default Posts;

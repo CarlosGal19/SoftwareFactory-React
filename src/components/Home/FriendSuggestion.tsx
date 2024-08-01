@@ -32,7 +32,7 @@ const FriendSuggestion: FC = () => {
   }, [jwt]);
 
   return (
-    <div className="mt-16 w-1/6 hidden md:block bg-sky-800	 shadow-lg  p-4">
+    <div className="mt-16 h-auto w-1/6 hidden md:block bg-sky-800	 shadow-lg  p-4">
       <h1 className="text-center font-bold text-2xl mb-4 text-slate-300">Friend Suggestions</h1>
       <div className="space-y-4 text-slate-300">
         {users.map((user) => (
