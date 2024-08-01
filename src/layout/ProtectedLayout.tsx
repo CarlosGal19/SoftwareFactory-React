@@ -4,7 +4,11 @@ import Header from "../components/Static/Header";
 import Footer from "../components/Static/Footer";
 
 const ProtectedRoute = () => {
-    const { isAuth } = useAuth();
+    const { isAuth, loading } = useAuth();
+
+    if (loading) {
+        return <div>Loading...</div>; // O cualquier componente de carga que desees
+    }
 
     return isAuth ? (
         <>
@@ -13,7 +17,7 @@ const ProtectedRoute = () => {
             <Footer />
         </>
     ) : (
-        <Navigate to="/" />
+        <Navigate to="/login" />
     );
 };
 
