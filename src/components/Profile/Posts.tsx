@@ -54,9 +54,15 @@ const Posts: FC = () => {
             {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
             <div className="bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-200">
                 <ul className="space-y-4">
-                    {posts.map(post => (
-                        <UserPost key={post.id} post={post} onPostUpdated={handlePostUpdate} />
-                    ))}
+                    {
+                        posts.length === 0 ? (
+                            <p className="text-center text-lg text-gray-600">You don't have any posts yet</p>
+                        ) : (
+                            posts.map(post => (
+                                <UserPost key={post.id} post={post} onPostUpdated={handlePostUpdate} />
+                            ))
+                        )
+                    }
                 </ul>
             </div>
         </div>
