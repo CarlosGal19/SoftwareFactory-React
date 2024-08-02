@@ -38,30 +38,39 @@ const Friend: FC<{ request: requestRequest }> = ({ request }) => {
     }
 
     return (
-        <li className="flex items-center justify-between py-4 border-b border-gray-200">
-            <div className="flex items-center">
+        <li className="flex items-center justify-between py-4 px-6">
+            <div className="flex items-center space-x-4">
                 <img
-                    className="w-16 h-16 rounded-full"
-                    src={request.sender.profile_photo}
-                    alt="Profile"
+                    className="w-16 h-16 rounded-full object-cover border border-gray-200"
+                    src={request.sender.profile_photo || './user.svg'}
+                    alt={`${request.sender.name} ${request.sender.last_name}'s profile`}
                 />
-                <div className="ml-4">
-                    <h3 className="text-lg font-semibold">
+                <div>
+                    <h3 className="text-lg font-semibold text-gray-800">
                         {request.sender.name} {request.sender.last_name}
                     </h3>
-                    <p className="text-gray-500">@{request.sender.user_name}</p>
+                    <p className="text-sm text-gray-500">@{request.sender.user_name}</p>
                 </div>
             </div>
-            <div className="flex items-center mr-8">
-                <button className="bg-green-500 text-white px-4 py-2 rounded-md mr-4" onClick={handleClick} value="accepted">
+            <div className="flex space-x-4">
+                <button
+                    className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200"
+                    onClick={handleClick}
+                    value="accepted"
+                >
                     Accept
                 </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded-md" onClick={handleClick} value="rejected">
+                <button
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200"
+                    onClick={handleClick}
+                    value="rejected"
+                >
                     Reject
                 </button>
             </div>
         </li>
-    )
+    );
+
 }
 
 export default Friend

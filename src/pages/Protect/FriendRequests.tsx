@@ -42,17 +42,25 @@ const FriendRequests: FC = () => {
   }, [jwt]);
 
   return (
-    <>
-      <div className="py-32 w-3/4 m-auto">
-        <h2 className="text-6xl font-bold">Friend Requests</h2>
-        <ul className="w-full shadow-lg py-8 pl-8">
-          {requests.map((request: FriendRequest) => (
-            <Friend key={request.id} request={request} />
-          ))}
-        </ul>
-      </div>
-    </>
-  )
+    <div className="flex flex-col min-h-screen py-16 px-4 bg-gray-100">
+        <header className="mb-8">
+            {/* Aquí puedes incluir tu componente de encabezado o cualquier otro contenido del encabezado */}
+        </header>
+        <main className="flex-grow w-full max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-gray-800 mb-8">Friend Requests</h2>
+            <ul className="bg-white shadow-lg rounded-lg border border-gray-200 divide-y divide-gray-200">
+                {requests.map((request: FriendRequest) => (
+                    <Friend key={request.id} request={request} />
+                ))}
+            </ul>
+        </main>
+        <footer className="mt-8">
+            {/* Aquí puedes incluir tu componente de pie de página */}
+        </footer>
+    </div>
+);
+
+
 }
 
 export default FriendRequests
