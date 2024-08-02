@@ -36,7 +36,7 @@ const Post: FC<PostProps> = ({ post, onEdit, onDelete }) => {
     };
 
     return (
-        <li key={post.id} className="mt-6 p-6 bg-white shadow-xl rounded-lg text-center w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 m-auto list-none border border-gray-200">
+        <li key={post.id} className="mt-6 p-6 bg-white shadow-xl rounded-lg text-center w-11/12 md:w-3/4 m-auto list-none border border-gray-200">
             {isEditing ? (
                 <EditPostForm post={post} onSave={handleSave} onCancel={handleCancel} />
             ) : (
