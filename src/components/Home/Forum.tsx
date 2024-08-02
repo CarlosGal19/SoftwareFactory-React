@@ -15,14 +15,14 @@ const Forum: FC<{ forum: OneForum }> = ({ forum }) => {
     const navigate = useNavigate();
 
     return (
-        <>
-            <div onClick={() => {
-                navigate(`/forum/${forum.id}`)
-            }} key={forum.id} className="m-2 p-2 bg-sky-700 rounded-lg shadow-lg text-center hover:shadow-sky-500 hover:cursor-pointer">
-                <h1 className="text-sm font-arial text-slate-300">{forum.name}</h1>
-            </div>
-        </>
-    )
+        <div
+            onClick={() => navigate(`/forum/${forum.id}`)}
+            key={forum.id}
+            className="m-2 p-4 bg-sky-700 rounded-lg shadow-lg text-center cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl"
+        >
+            <h1 className="text-lg font-semibold text-slate-300">{forum.name}</h1>
+        </div>
+    );
 }
 
 export default Forum
