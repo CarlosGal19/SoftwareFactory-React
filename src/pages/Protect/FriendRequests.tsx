@@ -42,10 +42,7 @@ const FriendRequests: FC = () => {
   }, [jwt]);
 
   return (
-    <div className="flex flex-col min-h-screen py-16 px-4 bg-gray-100">
-        <header className="mb-8">
-            {/* Aquí puedes incluir tu componente de encabezado o cualquier otro contenido del encabezado */}
-        </header>
+    <div className="flex flex-col min-h-screen py-16 px-4 bg-gray-100 my-16">
         <main className="flex-grow w-full max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-800 mb-8">Friend Requests</h2>
             <ul className="bg-white shadow-lg rounded-lg border border-gray-200 divide-y divide-gray-200">
@@ -54,9 +51,6 @@ const FriendRequests: FC = () => {
                 ))}
             </ul>
         </main>
-        <footer className="mt-8">
-            {/* Aquí puedes incluir tu componente de pie de página */}
-        </footer>
     </div>
 );
 
