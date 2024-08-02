@@ -9,24 +9,26 @@ const SideBar: FC = () => {
     return (
         <div className="w-1/5 h-screen bg-gray-800 text-white p-6 flex flex-col">
             <div className="flex items-center justify-center mb-8">
+                <Link to="/admin/home">
                 <img src="/UTMA.png" alt="UTMA Logo" className="w-32 h-auto" />
+                </Link>
             </div>
             <h2 className="text-2xl font-semibold mb-6">Admin Dashboard</h2>
             <ul className="space-y-4 flex-grow">
                 <li>
                     <Link
-                        to="/admin/create-forum"
+                        to="/admin/manage-forums"
                         className="block text-lg hover:bg-gray-700 p-2 rounded"
                     >
-                        Create Forum
+                        Manage Forums
                     </Link>
                 </li>
                 <li>
                     <Link
-                        to="/admin/create-topic"
+                        to="/admin/manage-topics"
                         className="block text-lg hover:bg-gray-700 p-2 rounded"
                     >
-                        Create Topic
+                        Manage Topics
                     </Link>
                 </li>
                 <li>

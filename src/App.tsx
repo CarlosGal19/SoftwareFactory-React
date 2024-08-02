@@ -15,9 +15,15 @@ import Forum from "./pages/Protect/Forum";
 import Topic from "./pages/Protect/Topic";
 import Chats from "./pages/Protect/Chats";
 import FriendRequests from "./pages/Protect/FriendRequests";
+
 import AdminLogin from "./pages/Admin/Login"
 import AdminHome from "./pages/Admin/Home"
 import AdminLayout from "./layout/AdminLayout";
+import AdminForums from "./pages/Admin/Forums.tsx";
+import AdminTopics from "./pages/Admin/Topics.tsx";
+import AdminPosts from "./pages/Admin/Posts.tsx";
+import CreateAdmin from "./pages/Admin/CreateAdmin.tsx";
+import CreateRols from "./pages/Admin/CreateRols.tsx";
 
 function App() {
 
@@ -60,6 +66,21 @@ function App() {
               </Route>
               <Route path="/admin/home" element={<AdminLayout />}>
                 <Route index element={<AdminHome />} />
+              </Route>
+              <Route path="/admin/manage-forums" element={<AdminLayout />}>
+                <Route index element={<AdminForums />} />
+              </Route>
+              <Route path="/admin/manage-topics" element={<AdminLayout />}>
+                <Route index element={<AdminTopics />} />
+              </Route>
+              <Route path="/admin/validate-posts" element={<AdminLayout />}>
+                <Route index element={<AdminPosts />} />
+              </Route>
+              <Route path="/admin/manage-admins" element={<AdminLayout />}>
+                <Route index element={<CreateAdmin />} />
+              </Route>
+              <Route path="/admin/manage-roles" element={<AdminLayout />}>
+                <Route index element={<CreateRols />} />
               </Route>
             </Routes>
           </AuthProvider>
