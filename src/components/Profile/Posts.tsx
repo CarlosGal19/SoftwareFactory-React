@@ -49,11 +49,11 @@ const Posts: FC = () => {
     };
 
     return (
-        <div className="w-full my-14 max-w-md">
-            <h2 className="text-2xl font-semibold mb-4">Your Posts</h2>
+        <div className="w-full my-14 max-w-lg mx-auto">
+            <h2 className="text-3xl font-semibold mb-6 text-gray-800">Your Posts</h2>
             {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
-            <div className="max-h-96 overflow-y-auto bg-gray-50 p-4 rounded-lg shadow-sm">
-                <ul>
+            <div className="bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-200">
+                <ul className="space-y-4">
                     {posts.map(post => (
                         <UserPost key={post.id} post={post} onPostUpdated={handlePostUpdate} />
                     ))}
@@ -61,6 +61,7 @@ const Posts: FC = () => {
             </div>
         </div>
     );
+
 };
 
 export default Posts;
