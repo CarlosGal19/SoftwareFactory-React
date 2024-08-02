@@ -46,9 +46,15 @@ const FriendRequests: FC = () => {
         <main className="flex-grow w-full max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-800 mb-8">Friend Requests</h2>
             <ul className="bg-white shadow-lg rounded-lg border border-gray-200 divide-y divide-gray-200">
-                {requests.map((request: FriendRequest) => (
+              {
+                requests.length === 0 ? (
+                  <p className="text-center text-lg text-gray-600 py-4">No friend requests</p>
+                ) : (
+                  requests.map((request: FriendRequest) => (
                     <Friend key={request.id} request={request} />
-                ))}
+                  ))
+                )
+              }
             </ul>
         </main>
     </div>
