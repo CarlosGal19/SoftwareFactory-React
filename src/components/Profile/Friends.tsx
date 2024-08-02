@@ -34,14 +34,14 @@ const Friends: FC = () => {
   }, [jwt]);
 
   return (
-    <div className="mt-16 w-auto hidden md:block">
-      <h1 className='text-center font-bold text-4xl mt-4'>Friends List</h1>
+    <div className="mt-16 w-full max-w-6xl mx-auto px-4">
+      <h1 className="text-center font-bold text-4xl mb-6 text-gray-800">Friends List</h1>
       {loading ? (
-        <p className="text-center mt-4">Loading friends...</p>
+        <p className="text-center text-lg text-gray-600">Loading friends...</p>
       ) : friends.length === 0 ? (
-        <p className='text-center mt-4'>You don't have friends yet</p>
+        <p className="text-center text-lg text-gray-600">You don't have friends yet</p>
       ) : (
-        <div className="shadow-xl w-5/6 m-auto grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {friends.map(friend => (
             <Friend key={friend.id} friend={friend} />
           ))}
@@ -49,6 +49,7 @@ const Friends: FC = () => {
       )}
     </div>
   );
+
 };
 
 export default Friends;
