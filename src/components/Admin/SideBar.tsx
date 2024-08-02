@@ -1,7 +1,11 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const SideBar: FC = () => {
+
+    const { logout } = useAuth();
+
     return (
         <div className="w-1/5 h-screen bg-gray-800 text-white p-6 flex flex-col">
             <div className="flex items-center justify-center mb-8">
@@ -50,7 +54,7 @@ const SideBar: FC = () => {
                     </Link>
                 </li>
             </ul>
-            <button className="mt-auto bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full">
+            <button className="mt-auto bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full" onClick={logout}>
                 Logout
             </button>
         </div>
