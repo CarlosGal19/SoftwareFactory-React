@@ -40,20 +40,18 @@ const Forum: FC = () => {
 
     return (
         <>
-            {
-                alert.msg && <Alert msg={alert.msg} type={alert.type} />
-            }
-            <div className="w-3/4 mx-auto mt-24">
-                <div className="bg-white p-8 shadow-lg rounded-lg">
-                    <h1 className="text-6xl font-bold text-gray-800 my-8">{forum?.name}</h1>
-                    <p className="text-gray-700 mb-12">{forum?.description}</p>
+            {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
+            <div className="w-full max-w-3xl mx-auto mt-16 px-4">
+                <div className="bg-white p-6 md:p-8 shadow-lg rounded-lg">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">{forum?.name}</h1>
+                    <p className="text-gray-700 mb-8 text-base md:text-lg">{forum?.description}</p>
                     <div>
                         <Topics id={forum?.id?.toString() ?? ''} />
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default Forum

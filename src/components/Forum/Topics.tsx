@@ -1,6 +1,5 @@
 import axiosClient from "../../config/axios";
 import { useEffect, useState, FC } from "react";
-import Alert from "../Static/Alert";
 import Topic from "./Topic";
 
 type OneTopic = {
@@ -15,7 +14,6 @@ type OneTopic = {
 
 const Topics: FC<{ id: string }> = ({ id }) => {
 
-    const [alert, setAlert] = useState({ type: '', msg: '' });
     const [topics, setTopics] = useState<Topic[]>([]);
 
     const jwt = localStorage.getItem('jwt');
@@ -29,26 +27,20 @@ const Topics: FC<{ id: string }> = ({ id }) => {
                     }
                 })
                 setTopics(response.data.topics);
-                setAlert({ msg: '', type: '' });
             } catch (error: any) {
-                setAlert({ msg: error.response.data.message, type: 'alert' })
+                console.log(error.response.data.message || 'An error occurred');
             }
         }
         fetchTopics();
     }, [id, jwt]);
 
     return (
-        <>
-            {
-                alert.msg && <Alert msg={alert.msg} type={alert.type} />
-            }
-            {
-                topics.map((topic: OneTopic) => (
-                    <Topic key={topic.id} topic={topic} />
-                ))
-            }
-        </>
-    )
+        <div className="space-y-4">
+            {topics.map((topic: OneTopic) => (
+                <Topic key={topic.id} topic={topic} />
+            ))}
+        </div>
+    );
 }
 
 export default Topics

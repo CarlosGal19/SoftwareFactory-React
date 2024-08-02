@@ -15,17 +15,18 @@ type Topic = {
 const Topic: FC<{ topic: Topic }> = ({ topic }) => {
 
     const navigate = useNavigate();
-
     return (
-        <>
-            <div key={topic.id} className="bg-gray-100 p-3 my-4 rounded-xl hover:shadow-sky-300 hover:cursor-pointer shadow-xl" onClick={() => {
-                navigate(`/topic/${topic.name}/${topic.id}`)
-            }}>
-                <h2 className="text-2xl font-bold text-gray-800">{topic.name}</h2>
-                <p className="text-gray-700">{topic.description}</p>
-            </div>
-        </>
-    )
+        <div
+            key={topic.id}
+            className="bg-white p-4 mb-4 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 transition-shadow duration-300 cursor-pointer"
+            onClick={() => {
+                navigate(`/topic/${topic.name}/${topic.id}`);
+            }}
+        >
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">{topic.name}</h2>
+            <p className="text-gray-600 text-sm">{topic.description}</p>
+        </div>
+    );
 }
 
 export default Topic
