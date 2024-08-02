@@ -6,14 +6,16 @@ import Footer from "../components/Static/Footer";
 const ProtectedRoute = () => {
     const { isAuth, loading } = useAuth();
 
-    if (loading) {
-        return <div>Loading...</div>; // O cualquier componente de carga que desees
-    }
-
     return isAuth ? (
         <>
             <Header />
-            <Outlet />
+            {
+                loading ? (
+                    <h2>Cargando...</h2>
+                ) : (
+                    <Outlet />
+                )
+            }
             <Footer />
         </>
     ) : (

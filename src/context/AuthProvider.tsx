@@ -6,7 +6,6 @@ import {
   useState,
 } from "react";
 import useStore from "../zustand/Zustand";
-import { useNavigate, useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 interface AuthContextProps {
@@ -32,8 +31,6 @@ const AuthContext = createContext({} as AuthContextProps);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const { isAuth, login: stateLogin, logout: stateLogout } = useStore();
-  const navigate = useNavigate();
-  const location = useLocation();
   const [loading, setLoading] = useState(true); // Estado de carga
 
   const login = useCallback(
@@ -55,35 +52,24 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       if (token) {
         try {
           const decoded: Decoded = jwtDecode(token);
-          if (decoded.exp * 1000 > Date.now()) {
-            stateLogin();
-            if (location.pathname === "/") {
-              navigate("/home");
-            }
-          } else {
-            logout();
-            if (location.pathname !== "/") {
-              navigate("/");
-            }
+          if (decoded.exp * 1000 < Date.now()) {
+            stateLogout();
+            return;
           }
+          login(token);
         } catch (error) {
-          logout();
-          if (location.pathname !== "/") {
-            navigate("/");
-          }
-          console.log(error);
+          stateLogout();
+        } finally {
+          setLoading(false); // Termina la carga
         }
-      } else {
-        logout();
-        if (location.pathname !== "/") {
-          navigate("/");
-        }
+        return
       }
+      stateLogout();
       setLoading(false); // Termina la carga
-    };
-
+      return;
+    }
     checkJWT();
-  }, [stateLogin, logout, navigate, location.pathname]);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>; // O cualquier componente de carga que desees
