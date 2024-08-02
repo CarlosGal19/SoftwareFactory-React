@@ -1,8 +1,35 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import axiosClient from "../../../config/axios";
 
 const Forums: FC = () => {
+
+  const [forums, setForums] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const jwt = localStorage.getItem('jwt');
+
+  useEffect(() => {
+    const getCount = async () => {
+      try {
+        const response = await axiosClient.get('/forums/count', {
+          headers: {
+            Authorization: `Bearer ${jwt}`
+          }
+        });
+        setForums(response.data.count);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getCount();
+  }, [])
+
+  if (loading) return <p className="text-2xl">...</p>
+
   return (
-    <p className="text-2xl">12</p>
+    <p className="text-2xl">{forums}</p>
   )
 }
 
