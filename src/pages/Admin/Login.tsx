@@ -38,7 +38,7 @@ const AdminLogin: FC = () => {
     <div className="shadow-xl px-6 py-12 rounded-lg bg-gray-100">
       <h2 className="text-center text-3xl font-extrabold mb-6 text-gray-800">Admin Login</h2>
       <div className='flex justify-center mb-8'>
-        <img src="./utma.png" alt="UTMA logo" className="h-16"/>
+        <img src="/UTMA.png" alt="UTMA logo" className="h-16"/>
       </div>
       {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
       <form onSubmit={handleSubmit}>
