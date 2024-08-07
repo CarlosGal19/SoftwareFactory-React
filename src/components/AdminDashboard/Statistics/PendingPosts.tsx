@@ -17,6 +17,7 @@ const PendingPosts: FC = () => {
             Authorization: `Bearer ${jwt}`
           }
         })
+        console.log(response.data.posts)
         setPosts(response.data.count)
       } catch (error) {
         const err = error as AxiosError
