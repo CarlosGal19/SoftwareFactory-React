@@ -12,7 +12,7 @@ const PendingPosts: FC = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axiosClient.get('/validated/no/count', {
+        const response = await axiosClient.get('/posts/validated/no/count', {
           headers: {
             Authorization: `Bearer ${jwt}`
           }
@@ -26,7 +26,7 @@ const PendingPosts: FC = () => {
       }
     }
     getPosts();
-  }, []);
+  }, [jwt]);
 
   if (loading) return <p className="text-2xl">...</p>
 
