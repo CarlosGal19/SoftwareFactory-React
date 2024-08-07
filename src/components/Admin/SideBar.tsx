@@ -15,7 +15,7 @@ const SideBar: FC = () => {
     };
 
     return (
-        <div className="w-1/5 h-screen bg-gray-800 text-white p-6 flex flex-col">
+        <div className="w-1/5 bg-gray-800 text-white p-6 flex flex-col">
             <div className="flex items-center justify-center mb-8">
                 <Link to="/admin/home">
                     <img src="/UTMA.png" alt="UTMA Logo" className="w-32 h-auto" />
