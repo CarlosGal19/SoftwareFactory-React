@@ -42,7 +42,7 @@ const CreateForum = () => {
   };
 
   return (
-    <div className="p-6 w-full md:w-4/5">
+    <div className="p-6 w-full">
       <h1 className="text-3xl font-bold mb-6">Create New Forum</h1>
       <div className="mt-8 bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">New Forum</h2>
