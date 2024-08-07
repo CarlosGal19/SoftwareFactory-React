@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import axiosClient from '../../config/axios';
+import { Link } from 'react-router-dom';
 
 const CreateTopic = () => {
   const [name, setName] = useState('');
@@ -38,10 +39,6 @@ const CreateTopic = () => {
     setDescription('');
   };
 
-  const handleCancel = () => {
-    resetForm();
-  };
-
   return (
     <div className="p-6 w-full">
       <h1 className="text-3xl font-bold mb-6">Create New Topic</h1>
@@ -75,13 +72,16 @@ const CreateTopic = () => {
           >
             {loading ? 'Creating...' : 'Create Topic'}
           </button>
-          <button
-            type="button"
-            onClick={handleCancel}
-            className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
-          >
-            Cancel
-          </button>
+          <Link to="/admin/manage-topics" className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200">
+            Go back to Topics
+
+            <button
+              type="button"
+              className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
+            >
+              Cancel
+            </button>
+          </Link>
         </form>
       </div>
     </div>

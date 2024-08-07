@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import axiosClient from '../../config/axios';
+import { Link } from 'react-router-dom';
 
 const CreateForum = () => {
   const [name, setName] = useState('');
@@ -37,10 +38,6 @@ const CreateForum = () => {
     setDescription('');
   };
 
-  const handleCancel = () => {
-    resetForm();
-  };
-
   return (
     <div className="p-6 w-full">
       <h1 className="text-3xl font-bold mb-6">Create New Forum</h1>
@@ -74,13 +71,14 @@ const CreateForum = () => {
           >
             {loading ? 'Creating...' : 'Create Forum'}
           </button>
-          <button
-            type="button"
-            onClick={handleCancel}
-            className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
-          >
-            Cancel
-          </button>
+          <Link to="/admin/manage-forums" className="mt-3 block text-center text-blue-500 hover:underline">
+            <button
+              type="button"
+              className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
+            >
+              Back to Forums
+            </button>
+          </Link>
         </form>
       </div>
     </div>
