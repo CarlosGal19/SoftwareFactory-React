@@ -1,10 +1,12 @@
 import { FormEvent, useState } from 'react';
 import axiosClient from '../../config/axios';
 import { Link } from 'react-router-dom';
+import  Forum from '../../components/Selectors/Forum';
 
 const CreateTopic = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [forum, setForum] = useState<number>(0);
   const [loading, setLoading] = useState(false);
 
   const jwt = localStorage.getItem('jwt');
@@ -65,6 +67,10 @@ const CreateTopic = () => {
               className="mt-2 px-4 py-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-gray-300"
             />
           </div>
+          <div>
+            <label className="block text-lg text-gray-700">Forum:</label>
+            <Forum setForum={setForum} forum={forum}/>
+          </div>
           <button
             type="submit"
             disabled={loading}
@@ -72,14 +78,14 @@ const CreateTopic = () => {
           >
             {loading ? 'Creating...' : 'Create Topic'}
           </button>
-          <Link to="/admin/manage-topics" className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200">
-            Go back to Topics
+          <Link to="/admin/manage-topics">
+
 
             <button
               type="button"
               className="mt-3 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
             >
-              Cancel
+              Go back to Topics
             </button>
           </Link>
         </form>
