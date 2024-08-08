@@ -3,12 +3,18 @@ import useAuth from "../hooks/useAuth";
 import SideBar from "../components/Admin/SideBar";
 
 const AdminLayout = () => {
-    const { isAuth } = useAuth();
+    const { isAuth, loading } = useAuth();
 
     return isAuth ? (
         <div className="flex">
             <SideBar />
-            <Outlet />
+            {
+                loading ? (
+                    <h2>Cargando...</h2>
+                ) : (
+                    <Outlet />
+                )
+            }
         </ div>
     ) : (
         <Navigate to="/" />
