@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 import axiosClient from '../../config/axios';
 
-import AdminItem from '../../components/Admin/ForumItem';
+import TopicItem from '../../components/Admin/TopicItem';
 
 type Topic = {
   id: number;
   name: string;
   description: string;
-  creator_id: number;
+  forum_id: number;
   created_at: string;
   updated_at: string;
 };
@@ -61,7 +61,7 @@ const Topics: FC = () => {
           )
         }
         {topics.map((topic: Topic) => (
-          <AdminItem key={topic.id} forum={topic} />
+          <TopicItem key={topic.id} topic={topic} />
         ))}
       </div>
     </div>

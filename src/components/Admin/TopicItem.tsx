@@ -5,6 +5,7 @@ type Topic = {
     id: number;
     name: string;
     description: string;
+    forum_id: number;
     created_at: string;
     updated_at: string;
 };
@@ -38,7 +39,8 @@ const TopicItem: FC<{ topic: Topic }> = ({ topic }) => {
         try {
             const response = await axiosClient.patch(`/topics/${topic.id}`, {
                 name,
-                description
+                description,
+                forum_id: topic.forum_id
             }, {
                 headers: {
                     Authorization: `Bearer ${jwt}`,
@@ -101,6 +103,7 @@ const TopicItem: FC<{ topic: Topic }> = ({ topic }) => {
                             </div>
                             <button
                                 type="submit"
+                                onClick={handleUpdate}
                                 className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-4 rounded-lg w-full transition ease-in-out duration-200"
                             >
                                 Update Topic
