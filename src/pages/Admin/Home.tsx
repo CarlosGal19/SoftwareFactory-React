@@ -4,7 +4,7 @@ import Statistics from "../../components/AdminDashboard/Statistics";
 
 const Home: FC = () => {
   return (
-    <div className="flex flex-col flex-grow p-6 bg-gray-100">
+    <div className="flex flex-col flex-grow p-6 bg-gray-100 w-full">
         <Instructions />
         <Statistics />
     </div>
