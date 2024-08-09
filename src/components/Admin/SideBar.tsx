@@ -43,11 +43,6 @@ const SideBar: FC = () => {
                         Manage Admins
                     </Link>
                 </li>
-                <li>
-                    <Link to="/admin/manage-roles" className={getLinkClasses("/admin/manage-roles")}>
-                        Manage Roles
-                    </Link>
-                </li>
             </ul>
             <button className="mt-8 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full" onClick={logout}>
                 Logout

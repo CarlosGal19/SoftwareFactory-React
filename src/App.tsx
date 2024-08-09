@@ -25,7 +25,6 @@ import AdminPosts from "./pages/Admin/Posts.tsx";
 
 import CreateForum from "./pages/Admin/CreateForum.tsx";
 import CreateAdmin from "./pages/Admin/CreateAdmin.tsx";
-import CreateRols from "./pages/Admin/CreateRols.tsx";
 import CreateTopic from "./pages/Admin/CreateTopic.tsx";
 
 function App() {
@@ -81,9 +80,6 @@ function App() {
               </Route>
               <Route path="/admin/manage-admins" element={<AdminLayout />}>
                 <Route index element={<CreateAdmin />} />
-              </Route>
-              <Route path="/admin/manage-roles" element={<AdminLayout />}>
-                <Route index element={<CreateRols />} />
               </Route>
               <Route path="/admin/create-forum" element={<AdminLayout />}>
                 <Route index element={<CreateForum />} />
