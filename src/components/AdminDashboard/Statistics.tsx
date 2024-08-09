@@ -3,7 +3,6 @@ import Forums from "./Statistics/Forums"
 import Topics from "./Statistics/Topics"
 import PendingPosts from "./Statistics/PendingPosts"
 import Admins from "./Statistics/Admins"
-import Roles from "./Statistics/Roles"
 
 const Statistics: FC = () => {
     return (
@@ -25,10 +24,6 @@ const Statistics: FC = () => {
                 <div className="bg-gray-200 p-4 rounded">
                     <p className="text-lg font-bold">Admins</p>
                     <Admins />
-                </div>
-                <div className="bg-gray-200 p-4 rounded">
-                    <p className="text-lg font-bold">Roles</p>
-                    <Roles />
                 </div>
             </div>
         </div>
