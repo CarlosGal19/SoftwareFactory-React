@@ -33,13 +33,6 @@ const Instructions = () => {
                     <h2 className="text-xl font-semibold mb-4">Manage Admins</h2>
                     <p className="text-gray-700">Add, remove, and update admin privileges.</p>
                 </Link>
-                <Link
-                    to="/admin/manage-roles"
-                    className="bg-white p-4 rounded shadow-md transition-transform transform hover:scale-105"
-                >
-                    <h2 className="text-xl font-semibold mb-4">Manage Roles</h2>
-                    <p className="text-gray-700">Define and assign roles to users and admins.</p>
-                </Link>
             </div>
         </>
     )
