@@ -4,7 +4,10 @@ import Admin from "./Admin"
 
 type User = {
   id: number,
-  name: string
+  name: string,
+  user_name: string;
+  email:string
+  profile_photo: string
 }
 
 const Admins: FC = () => {
