@@ -1,20 +1,11 @@
 import axiosClient from "../../config/axios";
 import { useEffect, useState, FC } from "react";
 import Topic from "./Topic";
-
-type OneTopic = {
-    id: number;
-    name: string;
-    description: string;
-    forum_id: number;
-    creator_id: number;
-    created_at: string;
-    updated_at: string;
-}
+import { TopicType } from "../../Types/Types";
 
 const Topics: FC<{ id: string }> = ({ id }) => {
 
-    const [topics, setTopics] = useState<Topic[]>([]);
+    const [topics, setTopics] = useState<TopicType[]>([]);
 
     const jwt = localStorage.getItem('jwt');
 
@@ -36,7 +27,7 @@ const Topics: FC<{ id: string }> = ({ id }) => {
 
     return (
         <div className="space-y-4">
-            {topics.map((topic: OneTopic) => (
+            {topics.map((topic: TopicType) => (
                 <Topic key={topic.id} topic={topic} />
             ))}
         </div>

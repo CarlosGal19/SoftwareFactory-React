@@ -1,15 +1,8 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
+import { ForumType } from "../../Types/Types";
 
-type Forum = {
-    id: number;
-    name: string;
-    description: string;
-    created_at: string;
-    updated_at: string;
-};
-
-const ForumItem: FC<{ forum: Forum }> = ({ forum }) => {
+const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
 
     const [edit, setEdit] = useState<boolean>(false);
     const [name, setName] = useState<string>(forum.name);

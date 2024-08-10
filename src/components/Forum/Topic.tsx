@@ -1,18 +1,8 @@
 import { FC } from "react"
 import { useNavigate } from "react-router-dom"
+import { TopicType } from "../../Types/Types"
 
-
-type Topic = {
-    id: number;
-    name: string;
-    description: string;
-    forum_id: number;
-    creator_id: number;
-    created_at: string;
-    updated_at: string;
-}
-
-const Topic: FC<{ topic: Topic }> = ({ topic }) => {
+const Topic: FC<{ topic: TopicType }> = ({ topic }) => {
 
     const navigate = useNavigate();
     return (

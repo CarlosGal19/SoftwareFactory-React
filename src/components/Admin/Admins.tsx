@@ -1,20 +1,13 @@
 import axiosClient from "../../config/axios"
 import { useEffect, useState, FC } from "react"
 import Admin from "./Admin"
-
-type User = {
-  id: number,
-  name: string,
-  user_name: string;
-  email:string
-  profile_photo: string
-}
+import { UserType } from "../../Types/Types"
 
 const Admins: FC = () => {
 
   const jwt = localStorage.getItem('jwt');
 
-  const [admins, setAdmins] = useState<User[]>([]);
+  const [admins, setAdmins] = useState<UserType[]>([]);
 
   useEffect(() => {
     async function fectAdmins() {
@@ -37,7 +30,7 @@ const Admins: FC = () => {
   return (
     <div>
       {
-        admins.map((admin: User) => (
+        admins.map((admin: UserType) => (
           <Admin key={admin.id} admin={admin} />
         ))
       }

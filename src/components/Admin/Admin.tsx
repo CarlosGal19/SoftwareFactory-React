@@ -1,14 +1,7 @@
 import { FC } from "react"
+import { UserType } from "../../Types/Types"
 
-type User = {
-    id: number,
-    name: string,
-    user_name: string;
-    email:string
-    profile_photo: string
-}
-
-const Admin: FC<{admin: User}> = ({admin}) => {
+const Admin: FC<{admin: UserType}> = ({admin}) => {
   return (
     <div className="w-2/3 mx-auto border-2 border-gray-100 mt-6 rounded-2xl flex justify-evenly shadow-lg">
         <div className="flex justify-center items-center">

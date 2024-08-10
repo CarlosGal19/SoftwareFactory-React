@@ -1,19 +1,8 @@
 import axiosClient from "../../config/axios";
 import { FC } from 'react';
+import { PostType } from "../../Types/Types";
 
-
-type Post = {
-    id: number;
-    title: string;
-    content: string;
-    status: string;
-    imageUrl: string;
-    creator_id: number;
-    created_at: string;
-    updated_at: string;
-};
-
-const ValidatePost: FC<{ post: Post }> = ({ post }) => {
+const ValidatePost: FC<{ post: PostType }> = ({ post }) => {
 
     const jwt = localStorage.getItem('jwt');
 
