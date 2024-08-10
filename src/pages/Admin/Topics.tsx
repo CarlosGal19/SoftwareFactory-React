@@ -4,18 +4,10 @@ import { Link } from 'react-router-dom';
 import axiosClient from '../../config/axios';
 
 import TopicItem from '../../components/Admin/TopicItem';
-
-type Topic = {
-  id: number;
-  name: string;
-  description: string;
-  forum_id: number;
-  created_at: string;
-  updated_at: string;
-};
+import { TopicType } from '../../Types/Types';
 
 const Topics: FC = () => {
-  const [topics, setTopics] = useState<Topic[]>([]);
+  const [topics, setTopics] = useState<TopicType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const jwt = localStorage.getItem('jwt');
@@ -60,7 +52,7 @@ const Topics: FC = () => {
             <p className="text-lg text-gray-800">No topics found.</p>
           )
         }
-        {topics.map((topic: Topic) => (
+        {topics.map((topic: TopicType) => (
           <TopicItem key={topic.id} topic={topic} />
         ))}
       </div>

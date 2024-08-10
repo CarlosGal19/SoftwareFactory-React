@@ -4,11 +4,7 @@ import Major from "../../components/Selectors/Major";
 import useMajor from "../../hooks/useMajor";
 import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
-
-interface AlertType {
-  type: string;
-  msg: string;
-}
+import { AlertType } from "../../Types/Types";
 
 const Register: FC = () => {
   const { major, setMajor } = useMajor();

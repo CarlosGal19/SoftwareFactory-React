@@ -1,21 +1,11 @@
 import { useState, useEffect } from 'react';
 import axiosClient from '../../config/axios';
 import ValidatePost from '../../components/Admin/ValidatePost';
-
-type Post = {
-  id: number;
-  title: string;
-  content: string;
-  status: string;
-  imageUrl: string;
-  creator_id: number;
-  created_at: string;
-  updated_at: string;
-};
+import { PostType } from '../../Types/Types';
 
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const jwt = localStorage.getItem('jwt');
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -45,7 +35,7 @@ const Posts = () => {
         <div className="space-y-4">
           {loading && <p>Loading...</p>}
           {!loading && posts.length === 0 && <p>No posts found</p>}
-          {posts.map((post: Post) => (
+          {posts.map((post: PostType) => (
             <ValidatePost post={post} />
           ))}
         </div>

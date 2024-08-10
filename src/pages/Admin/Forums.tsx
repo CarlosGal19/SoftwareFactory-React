@@ -4,17 +4,10 @@ import { Link } from 'react-router-dom';
 import axiosClient from '../../config/axios';
 
 import ForumItem from '../../components/Admin/ForumItem';
-
-type Forum = {
-  id: number;
-  name: string;
-  description: string;
-  created_at: string;
-  updated_at: string;
-};
+import { ForumType } from '../../Types/Types';
 
 const Forums = () => {
-  const [forums, setForums] = useState([] as Forum[]);
+  const [forums, setForums] = useState([] as ForumType[]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const jwt = localStorage.getItem('jwt');
@@ -57,7 +50,7 @@ const Forums = () => {
           {
             !loading && forums.length > 0 &&
 
-            forums.map((forum: Forum) => (
+            forums.map((forum: ForumType) => (
               <ForumItem key={forum.id} forum={forum} />
             ))
           }

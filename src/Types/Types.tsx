@@ -41,10 +41,16 @@ type PostType = {
     updated_at: string;
 }
 
+type AlertType = {
+    type: string;
+    msg: string;
+  }
+
 export type {
     ForumType,
     TopicType,
     MajorType,
     UserType,
-    PostType
+    PostType,
+    AlertType
 };

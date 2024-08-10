@@ -2,11 +2,7 @@ import { useState, FC } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Alert from '../../components/Static/Alert'
 import axiosClient from '../../config/axios'
-
-interface AlertType {
-    type: string;
-    msg: string;
-}
+import { AlertType } from '../../Types/Types'
 
 const NewPassword: FC = () => {
 

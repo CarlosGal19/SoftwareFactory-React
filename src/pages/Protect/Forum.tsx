@@ -3,19 +3,11 @@ import { useEffect, useState, FC } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Static/Alert";
 import Topics from "../../components/Forum/Topics";
-
-type Forum = {
-    id: number;
-    name: string;
-    description: string;
-    creator_id: number;
-    created_at: string;
-    updated_at: string;
-}
+import { ForumType } from "../../Types/Types";
 
 const Forum: FC = () => {
 
-    const [forum, setForum] = useState<Forum | null>(null);
+    const [forum, setForum] = useState<ForumType | null>(null);
     const { id } = useParams<{ id: string }>();
     const [alert, setAlert] = useState({ msg: '', type: '' });
 

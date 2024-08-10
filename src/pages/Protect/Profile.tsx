@@ -4,25 +4,11 @@ import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
 import Friends from "../../components/Profile/Friends";
 import Posts from "../../components/Profile/Posts";
-
-type User = {
-  id: number;
-  name: string;
-  last_name: string;
-  email: string;
-  user_name: string;
-  user_type_id: number;
-  gender: string;
-  major_id: number;
-  birth_date: string;
-  profile_photo: string;
-  created_at: string;
-  updated_at: string;
-}
+import { UserType } from "../../Types/Types";
 
 const Profile: FC = () => {
 
-  const [user, setUser] = useState<User>({} as User);
+  const [user, setUser] = useState<UserType>({} as UserType);
   const [alert, setAlert] = useState({ msg: '', type: '' });
 
   const jwt = localStorage.getItem('jwt');

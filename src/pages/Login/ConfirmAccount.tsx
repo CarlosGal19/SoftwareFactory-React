@@ -2,11 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, useRef, FC } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Static/Alert";
-
-interface AlertType {
-  type: string;
-  msg: string;
-}
+import { AlertType } from "../../Types/Types";
 
 const ConfirmAccount: FC = () => {
   const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
