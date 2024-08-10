@@ -35,6 +35,7 @@ type PostType = {
     content: string;
     status: string;
     imageUrl: string;
+    topic_id: number;
     creator_id: number;
     created_at: string;
     updated_at: string;

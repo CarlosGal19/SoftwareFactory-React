@@ -1,16 +1,10 @@
 import axiosClient from "../../config/axios";
 import { FC, useEffect, useState } from "react";
 import Friend from "./Friend";
-
-type User = {
-  id: number;
-  name: string;
-  last_name: string;
-  profile_photo: string;
-};
+import { UserType } from "../../Types/Types";
 
 const FriendSuggestion: FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserType[]>([]);
   const jwt = localStorage.getItem('jwt');
 
   useEffect(() => {

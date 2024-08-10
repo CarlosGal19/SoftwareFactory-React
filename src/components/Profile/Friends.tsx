@@ -1,17 +1,10 @@
 import { FC, useState, useEffect } from "react";
 import Friend from "../Profile/Friend";
 import axiosClient from "../../config/axios";
-
-type FriendType = {
-  id: number;
-  name: string;
-  last_name: string;
-  profile_photo: string;
-  user_name: string;
-};
+import { UserType } from "../../Types/Types";
 
 const Friends: FC = () => {
-  const [friends, setFriends] = useState<FriendType[]>([]);
+  const [friends, setFriends] = useState<UserType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const jwt = localStorage.getItem('jwt');
 

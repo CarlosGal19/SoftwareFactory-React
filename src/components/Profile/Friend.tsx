@@ -1,14 +1,7 @@
 import { FC } from "react";
+import { UserType } from "../../Types/Types";
 
-type Friend = {
-  id: number;
-  name: string;
-  last_name: string;
-  profile_photo: string;
-  user_name: string;
-};
-
-const Friend: FC<{ friend: Friend }> = ({ friend }) => {
+const Friend: FC<{ friend: UserType }> = ({ friend }) => {
   return (
     <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-lg">
       <img

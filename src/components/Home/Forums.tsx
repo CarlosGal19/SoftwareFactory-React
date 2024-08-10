@@ -2,20 +2,12 @@ import { FC, useEffect, useState } from 'react';
 import Alert from '../Static/Alert';
 import axiosClient from '../../config/axios';
 import Forum from './Forum';
-
-type Forum = {
-    id: number;
-    name: string;
-    description: string;
-    creator_id: number;
-    created_at: string;
-    updated_at: string;
-}
+import { ForumType } from '../../Types/Types';
 
 const Forums: FC = () => {
 
     const [alert, setAlert] = useState({ msg: '', type: '' });
-    const [forums, setForums] = useState<Forum[]>([]);
+    const [forums, setForums] = useState<ForumType[]>([]);
 
     const jwt = localStorage.getItem('jwt');
 

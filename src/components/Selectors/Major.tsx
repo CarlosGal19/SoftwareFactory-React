@@ -1,16 +1,11 @@
 import { FC, useEffect, useState, FormEvent } from 'react';
 import axiosClient from '../../config/axios';
 import useMajor from '../../hooks/useMajor';
-
-interface Majors {
-    id: number;
-    name: string;
-    description: string;
-}
+import { MajorType } from '../../Types/Types';
 
 const Major: FC = () => {
     const { major, setMajor } = useMajor();
-    const [majors, setMajors] = useState<Majors[]>([]);
+    const [majors, setMajors] = useState<MajorType[]>([]);
 
     useEffect(() => {
         async function fetchMajors() {

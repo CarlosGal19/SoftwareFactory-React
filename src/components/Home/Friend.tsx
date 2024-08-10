@@ -1,15 +1,8 @@
 import { FC } from "react";
 import axiosClient from "../../config/axios";
+import { UserType } from "../../Types/Types";
 
-type User = {
-  id: number;
-  name: string;
-  last_name: string;
-  profile_photo: string;
-  user_name: string;
-};
-
-const Friend: FC<{ friend: User }> = ({ friend }) => {
+const Friend: FC<{ friend: UserType }> = ({ friend }) => {
 
   const jwt = localStorage.getItem('jwt');
 

@@ -1,16 +1,8 @@
 import { FC } from "react"
 import { useNavigate } from "react-router-dom"
+import { ForumType } from "../../Types/Types";
 
-type OneForum = {
-    id: number;
-    name: string;
-    description: string;
-    creator_id: number;
-    created_at: string;
-    updated_at: string;
-}
-
-const Forum: FC<{ forum: OneForum }> = ({ forum }) => {
+const Forum: FC<{ forum: ForumType }> = ({ forum }) => {
 
     const navigate = useNavigate();
 

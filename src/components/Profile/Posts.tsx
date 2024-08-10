@@ -2,20 +2,10 @@ import axiosClient from "../../config/axios";
 import { FC, useEffect, useState } from "react";
 import UserPost from "./UserPost";
 import Alert from "../../components/Static/Alert";
-
-type Post = {
-    id: number;
-    title: string;
-    content: string;
-    topic_id: number;
-    creator_id: number;
-    url_img: string;
-    created_at: string;
-    updated_at: string;
-};
+import { PostType } from "../../Types/Types";
 
 const Posts: FC = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<PostType[]>([]);
     const [alert, setAlert] = useState({ msg: '', type: '' });
     const jwt = localStorage.getItem('jwt');
 

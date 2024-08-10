@@ -1,20 +1,10 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Static/Alert";
-
-type Post = {
-    id: number;
-    title: string;
-    content: string;
-    topic_id: number;
-    creator_id: number;
-    url_img: string;
-    created_at: string;
-    updated_at: string;
-};
+import { PostType } from "../../Types/Types";
 
 type UserPostProps = {
-    post: Post;
+    post: PostType;
     onPostUpdated: () => void; // Prop to notify parent component about updates
 };
 
@@ -22,7 +12,7 @@ const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [title, setTitle] = useState(post.title);
     const [content, setContent] = useState(post.content);
-    const [urlImg, setUrlImg] = useState(post.url_img);
+    const [urlImg, setUrlImg] = useState(post.imageUrl);
     const [alert, setAlert] = useState({ msg: '', type: '' });
     const jwt = localStorage.getItem('jwt');
 
@@ -95,7 +85,7 @@ const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
                 <>
                     <h2 className="text-3xl font-bold my-4 text-gray-800">{post.title}</h2>
                     <h3 className="text-xl my-4 text-gray-600">{post.content}</h3>
-                    {post.url_img && <img src={post.url_img} alt="Post Image" className="m-auto max-h-64 object-cover rounded-md shadow-md" />}
+                    {post.imageUrl && <img src={post.imageUrl} alt="Post Image" className="m-auto max-h-64 object-cover rounded-md shadow-md" />}
                     <h3 className="text-lg font-medium my-4 text-gray-500 text-left">{new Date(post.created_at).toLocaleDateString()}</h3>
                     <div className="flex justify-end mt-4 space-x-4">
                         <button onClick={() => setIsEditing(true)} className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition duration-200">Edit</button>

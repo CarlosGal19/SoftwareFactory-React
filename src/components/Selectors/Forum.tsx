@@ -1,15 +1,10 @@
 import { FC, useEffect, useState, FormEvent } from 'react';
 import axiosClient from '../../config/axios';
-
-interface Forum {
-    id: number;
-    name: string;
-    description: string;
-}
+import { ForumType } from '../../Types/Types';
 
 const Forum: FC<{ setForum: (forum: number) => void, forum: number }> = ({ setForum, forum }) => {
 
-    const [forums, setForums] = useState<Forum[]>([]);
+    const [forums, setForums] = useState<ForumType[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const jwt = localStorage.getItem('jwt');
