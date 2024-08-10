@@ -1,13 +1,14 @@
 import { FC, useEffect, useState, FormEvent } from 'react';
 import axiosClient from '../../config/axios';
 import { ForumType } from '../../Types/Types';
+import useAuth from "../../hooks/useAuth";
 
 const Forum: FC<{ setForum: (forum: number) => void, forum: number }> = ({ setForum, forum }) => {
 
     const [forums, setForums] = useState<ForumType[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     useEffect(() => {
         async function fetchMajors() {

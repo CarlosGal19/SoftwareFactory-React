@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
 import { TopicType } from "../../Types/Types";
+import useAuth from '../../hooks/useAuth'
 
 const TopicItem: FC<{ topic: TopicType }> = ({ topic }) => {
 
@@ -8,7 +9,7 @@ const TopicItem: FC<{ topic: TopicType }> = ({ topic }) => {
     const [name, setName] = useState<string>(topic.name);
     const [description, setDescription] = useState<string>(topic.description);
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     const handleDelete = async (id: number) => {
         try {

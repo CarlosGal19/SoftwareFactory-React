@@ -1,10 +1,11 @@
 import axiosClient from "../../config/axios";
 import { FC, useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const PostCreator: FC<{ id: number }> = ({ id }) => {
     const [creator, setCreator] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
-    const jwt = localStorage.getItem("jwt");
+    const { jwt } = useAuth();
 
     useEffect(() => {
         const getCreator = async () => {

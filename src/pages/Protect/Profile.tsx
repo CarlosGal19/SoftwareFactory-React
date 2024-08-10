@@ -5,13 +5,14 @@ import axiosClient from "../../config/axios";
 import Friends from "../../components/Profile/Friends";
 import Posts from "../../components/Profile/Posts";
 import { UserType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 const Profile: FC = () => {
 
   const [user, setUser] = useState<UserType>({} as UserType);
   const [alert, setAlert] = useState({ msg: '', type: '' });
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   useEffect(() => {
     const fetchProfile = async () => {

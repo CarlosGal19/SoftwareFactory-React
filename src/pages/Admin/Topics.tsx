@@ -5,12 +5,13 @@ import axiosClient from '../../config/axios';
 
 import TopicItem from '../../components/Admin/TopicItem';
 import { TopicType } from '../../Types/Types';
+import useAuth from "../../hooks/useAuth";
 
 const Topics: FC = () => {
   const [topics, setTopics] = useState<TopicType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   useEffect(() => {
     const fetchTopics = async () => {

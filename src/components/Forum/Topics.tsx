@@ -2,12 +2,13 @@ import axiosClient from "../../config/axios";
 import { useEffect, useState, FC } from "react";
 import Topic from "./Topic";
 import { TopicType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 const Topics: FC<{ id: string }> = ({ id }) => {
 
     const [topics, setTopics] = useState<TopicType[]>([]);
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     useEffect(() => {
         const fetchTopics = async () => {

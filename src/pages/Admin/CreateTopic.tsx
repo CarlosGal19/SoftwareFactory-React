@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import axiosClient from '../../config/axios';
 import { Link } from 'react-router-dom';
 import  Forum from '../../components/Selectors/Forum';
+import useAuth from "../../hooks/useAuth";
 
 const CreateTopic = () => {
   const [name, setName] = useState('');
@@ -9,7 +10,7 @@ const CreateTopic = () => {
   const [forum, setForum] = useState<number>(0);
   const [loading, setLoading] = useState(false);
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   const handleCreateTopic = async (e: FormEvent) => {
     e.preventDefault();

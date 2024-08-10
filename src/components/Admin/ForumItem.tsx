@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
 import { ForumType } from "../../Types/Types";
+import useAuth from '../../hooks/useAuth'
 
 const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
 
@@ -8,7 +9,7 @@ const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
     const [name, setName] = useState<string>(forum.name);
     const [description, setDescription] = useState<string>(forum.description);
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     const handleDelete = async (id: number) => {
         try {

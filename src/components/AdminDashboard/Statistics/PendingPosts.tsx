@@ -1,13 +1,14 @@
 import { FC, useState, useEffect } from 'react'
 import axiosClient from '../../../config/axios'
 import { AxiosError } from 'axios'
+import useAuth from '../../../hooks/useAuth'
 
 const PendingPosts: FC = () => {
 
   const [posts, setPosts] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(true)
 
-  const jwt = localStorage.getItem('jwt')
+  const { jwt } = useAuth()
 
   useEffect(() => {
     const getPosts = async () => {

@@ -5,12 +5,13 @@ import axiosClient from '../../config/axios';
 
 import ForumItem from '../../components/Admin/ForumItem';
 import { ForumType } from '../../Types/Types';
+import useAuth from "../../hooks/useAuth";
 
 const Forums = () => {
   const [forums, setForums] = useState([] as ForumType[]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   useEffect(() => {
     async function fetchForums() {

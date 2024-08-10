@@ -1,12 +1,13 @@
 import { FC, useEffect, useState } from 'react'
 import axiosClient from '../../../config/axios'
+import useAuth from '../../../hooks/useAuth'
 
 const Admins: FC = () => {
 
   const [admins, setAdmins] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(true)
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth()
 
   useEffect(() => {
     const getCount = async () => {

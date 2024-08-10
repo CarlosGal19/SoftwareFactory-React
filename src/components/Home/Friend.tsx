@@ -1,10 +1,11 @@
 import { FC } from "react";
 import axiosClient from "../../config/axios";
 import { UserType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 const Friend: FC<{ friend: UserType }> = ({ friend }) => {
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   const handleClick = async () => {
     try {

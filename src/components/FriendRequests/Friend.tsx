@@ -1,5 +1,6 @@
 import { FC } from "react"
 import axiosClient from "../../config/axios"
+import useAuth from "../../hooks/useAuth";
 
 type requestRequest = {
     id: number;
@@ -18,7 +19,7 @@ type requestRequest = {
 
 const Friend: FC<{ request: requestRequest }> = ({ request }) => {
 
-    const jwt = localStorage.getItem('jwt')
+    const { jwt } = useAuth();
 
     const handleClick = async (e: any) => {
         const status = e.target.value;

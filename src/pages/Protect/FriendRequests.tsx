@@ -1,6 +1,6 @@
 import axiosClient from "../../config/axios"
 import Friend from "../../components/FriendRequests/Friend";
-
+import useAuth from "../../hooks/useAuth";
 import { FC, useState, useEffect } from "react";
 
 type FriendRequest = {
@@ -22,7 +22,7 @@ const FriendRequests: FC = () => {
 
   const [requests, setRequests] = useState([]);
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   useEffect(() => {
     const fetchRequests = async () => {

@@ -1,10 +1,11 @@
 import axiosClient from "../../config/axios";
 import { FC } from 'react';
 import { PostType } from "../../Types/Types";
+import useAuth from '../../hooks/useAuth'
 
 const ValidatePost: FC<{ post: PostType }> = ({ post }) => {
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     const handleValidate = async (status: string, index: number) => {
         try {

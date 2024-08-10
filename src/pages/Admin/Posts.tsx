@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import axiosClient from '../../config/axios';
 import ValidatePost from '../../components/Admin/ValidatePost';
 import { PostType } from '../../Types/Types';
-
+import useAuth from "../../hooks/useAuth";
 
 const Posts = () => {
   const [posts, setPosts] = useState<PostType[]>([]);
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

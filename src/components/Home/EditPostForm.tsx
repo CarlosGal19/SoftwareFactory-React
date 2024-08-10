@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
+import useAuth from "../../hooks/useAuth";
 
 type EditPostFormProps = {
     post: {
@@ -16,7 +17,7 @@ const EditPostForm: FC<EditPostFormProps> = ({ post, onSave, onCancel }) => {
     const [title, setTitle] = useState(post.title);
     const [content, setContent] = useState(post.content);
     const [urlImg, setUrlImg] = useState(post.url_img);
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     const handleSave = async () => {
         try {

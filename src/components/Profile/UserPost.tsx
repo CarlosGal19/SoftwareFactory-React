@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
 import Alert from "../../components/Static/Alert";
 import { PostType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 type UserPostProps = {
     post: PostType;
@@ -14,7 +15,7 @@ const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
     const [content, setContent] = useState(post.content);
     const [urlImg, setUrlImg] = useState(post.imageUrl);
     const [alert, setAlert] = useState({ msg: '', type: '' });
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     const handleSave = async () => {
         try {

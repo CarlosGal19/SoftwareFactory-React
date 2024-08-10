@@ -3,13 +3,14 @@ import Alert from '../Static/Alert';
 import axiosClient from '../../config/axios';
 import Forum from './Forum';
 import { ForumType } from '../../Types/Types';
+import useAuth from "../../hooks/useAuth";
 
 const Forums: FC = () => {
 
     const [alert, setAlert] = useState({ msg: '', type: '' });
     const [forums, setForums] = useState<ForumType[]>([]);
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     useEffect(() => {
         const getForums = async () => {

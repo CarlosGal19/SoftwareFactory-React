@@ -14,7 +14,6 @@ interface AuthContextProps {
   logout: () => void;
   loading: boolean;
   jwt: string;
-  setJwt: (jwt: string) => void;
 }
 
 interface Decoded {
@@ -39,6 +38,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = useCallback(
     (jwt: string) => {
       localStorage.setItem("jwt", jwt);
+      setJwt(jwt);
       stateLogin();
     },
     [stateLogin]
@@ -46,6 +46,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logout = useCallback(() => {
     localStorage.removeItem("jwt");
+    setJwt("");
     stateLogout();
   }, [stateLogout]);
 
@@ -56,13 +57,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         try {
           const decoded: Decoded = jwtDecode(token);
           if (decoded.exp * 1000 < Date.now()) {
+            setJwt("");
             stateLogout();
             return;
           }
-          setJwt(token);
           login(token);
         } catch (error) {
           stateLogout();
+          setJwt("");
         } finally {
           setLoading(false);
         }
@@ -81,7 +83,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuth, login, logout, loading, jwt, setJwt }}>
+    <AuthContext.Provider value={{ isAuth, login, logout, loading, jwt }}>
       {children}
     </AuthContext.Provider>
   );

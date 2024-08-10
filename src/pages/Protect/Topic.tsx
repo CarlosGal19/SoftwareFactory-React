@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Alert from "../../components/Static/Alert";
 import Post from "../../components/Topic/Post";
 import CreatePost from "../../components/Topic/createPost";
-
+import useAuth from "../../hooks/useAuth";
 
 type OnePost = {
   id: number;
@@ -23,7 +23,7 @@ const Topic: FC = () => {
   const [editingPost, setEditingPost] = useState<OnePost | null>(null);
   const [formData, setFormData] = useState({ title: '', content: '', url_img: '' });
   const { id, name } = useParams();
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   const fetchPosts = async () => {
     try {

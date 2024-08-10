@@ -2,10 +2,11 @@ import axiosClient from "../../config/axios";
 import { FC, useEffect, useState } from "react";
 import Friend from "./Friend";
 import { UserType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 const FriendSuggestion: FC = () => {
   const [users, setUsers] = useState<UserType[]>([]);
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   useEffect(() => {
     const fetchUsers = async () => {

@@ -3,11 +3,12 @@ import { FC, useEffect, useState } from "react";
 import UserPost from "./UserPost";
 import Alert from "../../components/Static/Alert";
 import { PostType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 const Posts: FC = () => {
     const [posts, setPosts] = useState<PostType[]>([]);
     const [alert, setAlert] = useState({ msg: '', type: '' });
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     useEffect(() => {
         const fetchPosts = async () => {

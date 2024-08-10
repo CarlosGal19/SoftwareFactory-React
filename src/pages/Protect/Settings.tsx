@@ -2,6 +2,7 @@ import axiosClient from "../../config/axios";
 import { useEffect, FC, useState } from "react";
 import Alert from "../../components/Static/Alert";
 import { UserType } from "../../Types/Types";
+import useAuth from "../../hooks/useAuth";
 
 const Settings: FC = () => {
     const [user, setUser] = useState<UserType>({} as UserType);
@@ -9,7 +10,7 @@ const Settings: FC = () => {
     const [alert, setAlert] = useState({ msg: '', type: '' });
     const [edit, setEdit] = useState<boolean>(false);
 
-    const jwt = localStorage.getItem('jwt');
+    const { jwt } = useAuth();
 
     useEffect(() => {
         const fetchProfile = async () => {

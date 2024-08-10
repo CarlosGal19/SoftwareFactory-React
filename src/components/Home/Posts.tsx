@@ -3,6 +3,7 @@ import axiosClient from "../../config/axios";
 import Alert from "../Static/Alert";
 import { FC } from "react";
 import Post from "./Post";
+import useAuth from "../../hooks/useAuth";
 
 type OnePost = {
     id: number;
@@ -18,7 +19,7 @@ type OnePost = {
 const Posts: FC = () => {
     const [posts, setPosts] = useState<OnePost[]>([]);
     const [alert, setAlert] = useState({ type: "", msg: "" });
-    const jwt = localStorage.getItem("jwt");
+    const { jwt } = useAuth();
 
     useEffect(() => {
         const getPosts = async () => {

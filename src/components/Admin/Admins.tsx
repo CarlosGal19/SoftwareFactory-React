@@ -2,10 +2,11 @@ import axiosClient from "../../config/axios"
 import { useEffect, useState, FC } from "react"
 import Admin from "./Admin"
 import { UserType } from "../../Types/Types"
+import useAuth from '../../hooks/useAuth'
 
 const Admins: FC = () => {
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   const [admins, setAdmins] = useState<UserType[]>([]);
 

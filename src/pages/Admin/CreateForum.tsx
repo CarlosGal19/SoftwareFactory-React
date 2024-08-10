@@ -1,13 +1,14 @@
 import { FormEvent, useState } from 'react';
 import axiosClient from '../../config/axios';
 import { Link } from 'react-router-dom';
+import useAuth from "../../hooks/useAuth";
 
 const CreateForum = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const jwt = localStorage.getItem('jwt');
+  const { jwt } = useAuth();
 
   const handleCreateForum = async (e: FormEvent) => {
     e.preventDefault();
