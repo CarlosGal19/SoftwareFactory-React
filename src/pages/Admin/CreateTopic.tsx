@@ -21,7 +21,7 @@ const CreateTopic = () => {
       const response = await axiosClient.post('/topics', {
         name,
         description,
-        forum_id: 5
+        forum_id: forum
       }, {
         headers: {
           Authorization: `Bearer ${jwt}`,
