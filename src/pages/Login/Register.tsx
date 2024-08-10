@@ -1,21 +1,20 @@
 import { useState, FC, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import Major from "../../components/Selectors/Major";
-import useMajor from "../../hooks/useMajor";
 import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
 import { AlertType } from "../../Types/Types";
 
 const Register: FC = () => {
-  const { major, setMajor } = useMajor();
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [gender, setGender] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [major, setMajor] = useState<number>(0);
+  const [name, setName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [birthDate, setBirthDate] = useState<string>('');
+  const [gender, setGender] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [repeatPassword, setRepeatPassword] = useState<string>('');
 
   const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
 
@@ -141,7 +140,7 @@ const Register: FC = () => {
           </div>
           <div className="mb-5">
             <label htmlFor="major" className="block text-sm font-medium text-gray-700">Major</label>
-            <Major />
+            <Major major={major} setMajor={setMajor} />
           </div>
           <div className="mb-5">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>

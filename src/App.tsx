@@ -5,7 +5,6 @@ import Register from './pages/Login/Register';
 import ForgetPassword from './pages/Login/ForgetPassword';
 import NewPassword from './pages/Login/NewPassword';
 import ConfirmAccount from './pages/Login/ConfirmAccount';
-import { MajorProvider } from "./context/MajorProvider.tsx";
 import { AuthProvider } from "./context/AuthProvider.tsx";
 import Home from './pages/Protect/Home';
 import ProtectedRoute from './layout/ProtectedLayout.tsx';
@@ -31,7 +30,6 @@ function App() {
 
   return (
     <>
-      <MajorProvider>
         <BrowserRouter>
           <AuthProvider>
             <Routes>
@@ -90,7 +88,6 @@ function App() {
             </Routes>
           </AuthProvider>
         </BrowserRouter>
-      </MajorProvider>
     </>
   )
 }

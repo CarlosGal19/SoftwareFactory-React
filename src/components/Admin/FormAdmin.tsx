@@ -1,12 +1,11 @@
 // import axiosClient from "../../config/axios"
 import { FC, FormEvent, useState } from 'react'
 import Major from '../Selectors/Major'
-import useMajor from '../../hooks/useMajor';
 import axiosClient from '../../config/axios';
 
 const FormAdmin: FC = () => {
 
-  const { major, setMajor } = useMajor();
+  const [major, setMajor] = useState<number>(0);
   const [name, setName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
@@ -133,7 +132,7 @@ const FormAdmin: FC = () => {
           </div>
           <div className="mb-5">
             <label htmlFor="major" className="block text-sm font-medium text-gray-700">Major</label>
-            <Major />
+            <Major major={major} setMajor={setMajor} />
           </div>
           <div className="mb-5">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>

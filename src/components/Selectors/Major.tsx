@@ -1,10 +1,9 @@
 import { FC, useEffect, useState, FormEvent } from 'react';
 import axiosClient from '../../config/axios';
-import useMajor from '../../hooks/useMajor';
 import { MajorType } from '../../Types/Types';
 
-const Major: FC = () => {
-    const { major, setMajor } = useMajor();
+const Major: FC<{major: number, setMajor: (major: number) => void}> = ({major, setMajor}) => {
+
     const [majors, setMajors] = useState<MajorType[]>([]);
 
     useEffect(() => {
