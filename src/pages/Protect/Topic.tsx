@@ -84,15 +84,15 @@ const Topic: FC = () => {
 
   return (
     <>
-      <div className="md:container md:mx-auto mt-16 p-6 bg-gray-100 rounded-lg shadow-md">
-        <h2 className="text-4xl font-semibold text-center text-gray-800 mb-6 border-b border-gray-300 pb-2">{name}</h2>
+      <div className="md:container md:mx-auto mt-16 p-6 rounded-lg">
+        <h2 className="text-6xl font-bold text-center text-gray-800 mb-6 border-b border-gray-300 pb-2">{name}</h2>
       </div>
 
-      <div className="md:container md:mx-auto my-8 p-6 bg-gray-100 rounded-lg shadow-md">
+      <div className="md:container md:mx-auto my-2 p-6 rounded-lg">
         <CreatePost topicId={id!} onPostCreated={fetchPosts} />
       </div>
 
-      <div className="md:container md:mx-auto my-8 p-6 bg-gray-100 rounded-lg shadow-md">
+      <div className="md:container md:mx-auto my-8 p-6 bg-gray-50 rounded-lg shadow-md">
         {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
         <div className="space-y-6">
           {posts && posts.map((post: OnePost) => (
