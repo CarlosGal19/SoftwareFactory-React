@@ -8,7 +8,10 @@ import useAuth from "../../hooks/useAuth";
 type OnePost = {
     id: number;
     topic_id: number;
-    creator_id: number;
+    creator:{
+        name: string;
+        last_name: string;
+    };
     title: string;
     content: string;
     url_img: string;
@@ -29,6 +32,7 @@ const Posts: FC = () => {
                         Authorization: `Bearer ${jwt}`,
                     },
                 });
+                console.log(response.data.posts);
                 setPosts(response.data.posts);
                 setAlert({ type: "", msg: "" });
             } catch (error: any) {

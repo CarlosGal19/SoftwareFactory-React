@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import PostCreator from "./PostCreator";
 import EditPostForm from "./EditPostForm";
 import ReactionButton from "./ReactionButton";
 import Modal from "./Modal";
@@ -7,7 +6,10 @@ import Modal from "./Modal";
 type Post = {
     id: number;
     topic_id: number;
-    creator_id: number;
+    creator: {
+        name: string;
+        last_name: string;
+    },
     title: string;
     content: string;
     url_img: string;
@@ -70,10 +72,15 @@ const Post: FC<PostProps> = ({ post, onEdit, onDelete }) => {
             ) : (
                 <>
                     <div className="flex space-x-2 place-content-between">
-                        <PostCreator id={post.creator_id} />
+                        <div className="flex items-center space-x-4">
+                            <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                                <span className="text-gray-500 font-bold">{post.creator.name.charAt(0)}</span>
+                            </div>
+                            <h2 className="text-lg font-semibold text-gray-700">{`${post.creator.name} ${post.creator.last_name}`}</h2>
+                        </div>
                         <div className="flex space-x-2">
                             <button onClick={handleEdit} className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-sky-600 transition duration-200">Edit</button>
-                            <button onClick={() => onDelete(post.id)} className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-red-600 transition duration-200"><img src="../bin.svg"/></button>
+                            <button onClick={() => onDelete(post.id)} className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-red-600 transition duration-200"><img src="../bin.svg" /></button>
                         </div>
                     </div>
                     <h2 className="text-3xl font-bold my-4 text-gray-800">{post.title}</h2>
@@ -101,7 +108,7 @@ const Post: FC<PostProps> = ({ post, onEdit, onDelete }) => {
             )}
             {showModal && <Modal onClose={handleCloseModal} post={post} comments={comments} reactions={reactions} onAddComment={function (content: string): void {
                 throw new Error("Function not implemented.");
-            } } />}
+            }} />}
         </li>
     );
 };
