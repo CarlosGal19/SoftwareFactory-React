@@ -17,7 +17,6 @@ const Posts = () => {
             Authorization: `Bearer ${jwt}`,
           },
         });
-        console.log(response.data.posts);
         setPosts(response.data.posts);
       } catch (error) {
         console.log(error);
@@ -36,7 +35,7 @@ const Posts = () => {
           {loading && <p>Loading...</p>}
           {!loading && posts.length === 0 && <p>No posts found</p>}
           {posts.map((post: PostType) => (
-            <ValidatePost post={post} />
+            <ValidatePost post={post} key={post.id} />
           ))}
         </div>
       </div>
