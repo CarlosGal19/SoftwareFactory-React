@@ -17,7 +17,6 @@ const FriendSuggestion: FC = () => {
           },
         });
         setUsers(response.data.notFriends);
-        console.log(response.data.notFriends);
       } catch (error) {
         console.log(error);
       }
