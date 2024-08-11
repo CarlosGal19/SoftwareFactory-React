@@ -13,7 +13,7 @@ const Topics: FC<{ id: string }> = ({ id }) => {
     useEffect(() => {
         const fetchTopics = async () => {
             try {
-                const response = await axiosClient.get(`topics/all/${id}`, {
+                const response = await axiosClient.get(`topics/all/${parseInt(id)}`, {
                     headers: {
                         Authorization: `Bearer ${jwt}`
                     }
@@ -28,7 +28,7 @@ const Topics: FC<{ id: string }> = ({ id }) => {
 
     return (
         <div className="space-y-4">
-            {topics.map((topic: TopicType) => (
+            { topics.length > 0 && topics.map((topic: TopicType) => (
                 <Topic key={topic.id} topic={topic} />
             ))}
         </div>
