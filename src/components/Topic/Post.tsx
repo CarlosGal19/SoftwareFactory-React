@@ -21,6 +21,7 @@ interface PostProps {
 }
 
 const Post: FC<PostProps> = ({ post, onEdit, onDelete }) => {
+
     return (
         <div key={post.id} className="bg-white p-6 my-4 rounded-lg shadow-md w-full max-w-2xl mx-auto border-t-4 border-sky-500 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">{post.title}</h2>

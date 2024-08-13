@@ -21,7 +21,7 @@ const Topics: FC<{ id: string }> = ({ id }) => {
                     }
                 })
                 setTopics(response.data.topics);
-                setAlert({message: response.data.message, type: 'success'})
+                setAlert({message: '', type: 'success'})
             } catch (error: any) {
                 setAlert({message: error.response.data.message, type:'alert'})
             }

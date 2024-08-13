@@ -21,7 +21,7 @@ const Posts: FC = () => {
                     }
                 });
                 setPosts(response.data.posts);
-                setAlert({message: response.data.message, type: 'success'})
+                setAlert({message: '', type: 'success'})
             } catch (error: any) {
                 setAlert({ message: error.response.data.message || 'An error occurred', type: 'error' });
             }

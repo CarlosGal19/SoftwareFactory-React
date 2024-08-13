@@ -33,7 +33,6 @@ const Posts: FC = () => {
                         Authorization: `Bearer ${jwt}`,
                     },
                 });
-                console.log(response.data.posts);
                 setPosts(response.data.posts);
                 setAlert({ type: "", message: "" });
             } catch (error: any) {
