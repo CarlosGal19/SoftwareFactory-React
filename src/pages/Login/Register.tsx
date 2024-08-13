@@ -16,18 +16,18 @@ const Register: FC = () => {
   const [password, setPassword] = useState<string>('');
   const [repeatPassword, setRepeatPassword] = useState<string>('');
 
-  const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if ([name, lastName, userName, email, birthDate, gender, major, password, repeatPassword].includes('')) {
-      setAlert({ type: 'alert', msg: 'All fields are required' });
+      setAlert({ type: 'alert', message: 'All fields are required' });
       return;
     }
 
     if (password !== repeatPassword) {
-      setAlert({ type: 'alert', msg: 'Passwords do not match' });
+      setAlert({ type: 'alert', message: 'Passwords do not match' });
       return;
     }
 
@@ -53,10 +53,10 @@ const Register: FC = () => {
       setRepeatPassword('');
       setAlert({
         type: 'success',
-        msg: response.data.message
+        message: response.data.message
       })
     } catch (error: any) {
-      setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
+      setAlert({ message: error.response.data.message || 'An error occurred', type: 'alert' });
     }
   };
 
@@ -66,7 +66,7 @@ const Register: FC = () => {
         <img src="./UTMA.png" alt="UTMA LOGO" />
       </div>
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
-        {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
+        {alert.message && <Alert alert={alert} />}
         <form onSubmit={handleSubmit}>
           <div className="mb-5">
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>

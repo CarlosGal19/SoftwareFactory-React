@@ -1,13 +1,13 @@
 import axiosClient from "../../config/axios";
 import { useEffect, FC, useState } from "react";
 import Alert from "../../components/Static/Alert";
-import { UserType } from "../../Types/Types";
+import { AlertType, UserType } from "../../Types/Types";
 import useAuth from "../../hooks/useAuth";
 
 const Settings: FC = () => {
     const [user, setUser] = useState<UserType>({} as UserType);
     const [major, setMajor] = useState({ name: '', description: '' });
-    const [alert, setAlert] = useState({ msg: '', type: '' });
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
     const [edit, setEdit] = useState<boolean>(false);
 
     const { jwt } = useAuth();
@@ -22,9 +22,9 @@ const Settings: FC = () => {
                 });
                 setUser(response.data.user);
                 setMajor(response.data.major);
-                setAlert({ msg: '', type: '' });
+                setAlert({ message: '', type: '' });
             } catch (error: any) {
-                setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
+                setAlert({ message: error.response.data.message || 'An error occurred', type: 'alert' });
             }
         }
         fetchProfile();
@@ -46,17 +46,17 @@ const Settings: FC = () => {
                 }
             });
             setUser(response.data.user);
-            setAlert({ msg: response.data.message, type: 'success' });
+            setAlert({ message: response.data.message, type: 'success' });
             setEdit(false);
         } catch (error: any) {
-            setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
+            setAlert({ message: error.response.data.message || 'An error occurred', type: 'alert' });
         }
 
     }
 
     return (
         <>
-            {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
+            {alert.message && <Alert alert={alert} />}
             {user.id && (
                 <div className="mt-24 p-8 max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
                     <h1 className="text-center text-6xl font-bold text-gray-800 mb-8">Account Settings</h1>

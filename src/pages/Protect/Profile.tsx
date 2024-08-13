@@ -4,13 +4,13 @@ import Alert from "../../components/Static/Alert";
 import axiosClient from "../../config/axios";
 import Friends from "../../components/Profile/Friends";
 import Posts from "../../components/Profile/Posts";
-import { UserType } from "../../Types/Types";
+import { AlertType, UserType } from "../../Types/Types";
 import useAuth from "../../hooks/useAuth";
 
 const Profile: FC = () => {
 
   const [user, setUser] = useState<UserType>({} as UserType);
-  const [alert, setAlert] = useState({ msg: '', type: '' });
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const { jwt } = useAuth();
 
@@ -23,9 +23,9 @@ const Profile: FC = () => {
           }
         });
         setUser(response.data.user);
-        setAlert({ msg: '', type: '' });
+        setAlert({ message: '', type: '' });
       } catch (error: any) {
-        setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
+        setAlert({ message: error.response.data.message || 'An error occurred', type: 'alert' });
       }
     }
     fetchProfile();
@@ -33,7 +33,7 @@ const Profile: FC = () => {
 
   return (
     <>
-      {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
+      {alert.message && <Alert alert={alert} />}
       {user.id && (
         <div className="mt-20 p-8 w-5/6 mx-auto bg-white rounded-lg shadow-lg grid md:grid-cols-2 gap-8">
           <div>

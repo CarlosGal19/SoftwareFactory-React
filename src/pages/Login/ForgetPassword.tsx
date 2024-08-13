@@ -7,14 +7,14 @@ import { AlertType } from "../../Types/Types";
 const ForgetPassword: FC = () => {
 
   const [email, setEmail] = useState('');
-  const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || email.length < 10) {
       setAlert({
         type: 'alert',
-        msg: 'Please enter a valid email'
+        message: 'Please enter a valid email'
       })
       return;
     }
@@ -24,13 +24,13 @@ const ForgetPassword: FC = () => {
         setEmail('');
         setAlert({
           type: 'success',
-          msg: response.data.message
+          message: response.data.message
         })
       }
     } catch (error: any) {
       setAlert({
         type: 'alert',
-        msg: error.response.data.message || 'An error occurred'
+        message: error.response.data.message || 'An error occurred'
       })
     }
   }
@@ -43,8 +43,8 @@ const ForgetPassword: FC = () => {
         </div>
         <div className='mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white'>
           {
-            alert.msg && (
-              <Alert type={alert.type} msg={alert.msg} />
+            alert.message && (
+              <Alert alert={alert} />
             )
           }
           <form onSubmit={handleSubmit}>

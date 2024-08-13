@@ -4,6 +4,7 @@ import Alert from '../../components/Static/Alert';
 import axiosClient from '../../config/axios';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { AlertType } from '../../Types/Types';
 
 const Login: FC = () => {
   const { login } = useAuth();
@@ -11,14 +12,14 @@ const Login: FC = () => {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [alert, setAlert] = useState<{ msg: string; type: string }>({ msg: '', type: '' });
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if ([email, password].includes('')) {
       setAlert({
         type: 'alert',
-        msg: 'Both fields are required'
+        message: 'Both fields are required'
       });
       return;
     }
@@ -29,7 +30,7 @@ const Login: FC = () => {
       login(response.data.token);
       navigate('/home');
     } catch (error: any) {
-      setAlert({ msg: error.response.data.message || 'An error occurred', type: 'alert' });
+      setAlert({ message: error.response.data.message || 'An error occurred', type: 'alert' });
     }
   };
 
@@ -39,7 +40,7 @@ const Login: FC = () => {
       <div className='flex justify-center mb-6'>
         <img src="./UTMA.png" alt="UTMA LOGO" />
       </div>
-      {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
+      {alert.message && <Alert alert={alert} />}
       <form onSubmit={handleSubmit}>
         <div className="mb-5">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>

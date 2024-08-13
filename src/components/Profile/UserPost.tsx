@@ -4,6 +4,8 @@ import Alert from "../../components/Static/Alert";
 import { PostType } from "../../Types/Types";
 import useAuth from "../../hooks/useAuth";
 
+import { AlertType } from "../../Types/Types";
+
 type UserPostProps = {
     post: PostType;
     onPostUpdated: () => void; // Prop to notify parent component about updates
@@ -14,7 +16,7 @@ const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
     const [title, setTitle] = useState(post.title);
     const [content, setContent] = useState(post.content);
     const [urlImg, setUrlImg] = useState(post.imageUrl);
-    const [alert, setAlert] = useState({ msg: '', type: '' });
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
     const { jwt } = useAuth();
 
     const handleSave = async () => {
@@ -28,12 +30,12 @@ const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
                     Authorization: `Bearer ${jwt}`
                 }
             });
-            setAlert({ msg: 'Post edited successfully!', type: 'success' });
+            setAlert({ message: 'Post edited successfully!', type: 'success' });
             setIsEditing(false);
             onPostUpdated(); // Notify parent component
         } catch (error) {
             console.error("Failed to update post:", error);
-            setAlert({ msg: 'Failed to update post.', type: 'error' });
+            setAlert({ message: 'Failed to update post.', type: 'error' });
         }
     };
 
@@ -44,17 +46,17 @@ const UserPost: FC<UserPostProps> = ({ post, onPostUpdated }) => {
                     Authorization: `Bearer ${jwt}`
                 }
             });
-            setAlert({ msg: 'Post deleted successfully!', type: 'success' });
+            setAlert({ message: 'Post deleted successfully!', type: 'success' });
             onPostUpdated(); // Notify parent component
         } catch (error) {
             console.error("Failed to delete post:", error);
-            setAlert({ msg: 'Failed to delete post.', type: 'error' });
+            setAlert({ message: 'Failed to delete post.', type: 'error' });
         }
     };
 
     return (
         <li className="mt-6 p-6 bg-white shadow-xl rounded-lg text-center w-11/12 m-auto list-none border border-gray-200">
-            {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
+            {alert.message && <Alert alert={alert} />}
             {isEditing ? (
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <input

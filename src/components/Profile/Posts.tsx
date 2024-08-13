@@ -5,9 +5,11 @@ import Alert from "../../components/Static/Alert";
 import { PostType } from "../../Types/Types";
 import useAuth from "../../hooks/useAuth";
 
+import { AlertType } from "../../Types/Types";
+
 const Posts: FC = () => {
     const [posts, setPosts] = useState<PostType[]>([]);
-    const [alert, setAlert] = useState({ msg: '', type: '' });
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
     const { jwt } = useAuth();
 
     useEffect(() => {
@@ -20,7 +22,7 @@ const Posts: FC = () => {
                 });
                 setPosts(response.data.posts);
             } catch (error: any) {
-                setAlert({ msg: error.response.data.message || 'An error occurred', type: 'error' });
+                setAlert({ message: error.response.data.message || 'An error occurred', type: 'error' });
             }
         };
         fetchPosts();
@@ -35,14 +37,14 @@ const Posts: FC = () => {
             });
             setPosts(response.data.posts);
         } catch (error: any) {
-            setAlert({ msg: error.response.data.message || 'An error occurred', type: 'error' });
+            setAlert({ message: error.response.data.message || 'An error occurred', type: 'error' });
         }
     };
 
     return (
         <div className="w-full my-14 max-w-lg mx-auto">
             <h2 className="text-3xl font-semibold mb-6 text-gray-800">Your Posts</h2>
-            {alert.msg && <Alert msg={alert.msg} type={alert.type} />}
+            {alert.message && <Alert alert={alert} />}
             <div className="bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-200">
                 <ul className="space-y-4">
                     {

@@ -4,6 +4,7 @@ import Alert from "../Static/Alert";
 import { FC } from "react";
 import Post from "./Post";
 import useAuth from "../../hooks/useAuth";
+import { AlertType } from "../../Types/Types";
 
 type OnePost = {
     id: number;
@@ -21,7 +22,7 @@ type OnePost = {
 
 const Posts: FC = () => {
     const [posts, setPosts] = useState<OnePost[]>([]);
-    const [alert, setAlert] = useState({ type: "", msg: "" });
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
     const { jwt } = useAuth();
 
     useEffect(() => {
@@ -34,9 +35,9 @@ const Posts: FC = () => {
                 });
                 console.log(response.data.posts);
                 setPosts(response.data.posts);
-                setAlert({ type: "", msg: "" });
+                setAlert({ type: "", message: "" });
             } catch (error: any) {
-                setAlert({ type: "error", msg: error.response.data.message });
+                setAlert({ type: "error", message: error.response.data.message });
             }
         };
         getPosts();
@@ -54,15 +55,15 @@ const Posts: FC = () => {
                 },
             });
             setPosts(posts.filter((post) => post.id !== id));
-            setAlert({ type: "success", msg: "Post deleted successfully" });
+            setAlert({ type: "success", message: "Post deleted successfully" });
         } catch (error: any) {
-            setAlert({ type: "error", msg: error.response.data.message });
+            setAlert({ type: "error", message: error.response.data.message });
         }
     };
 
     return (
         <>
-            {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
+            {alert.message && <Alert alert={alert} />}
             <div className="overflow-y-auto h-screen bg-gray-100 py-8">
                 <div className="container mx-auto">
                     {posts.length > 0 ? (

@@ -8,7 +8,7 @@ const NewPassword: FC = () => {
 
     const [password, setPassword] = useState('');
     const [passwordUpdated, setPasswordUpdated] = useState(false);
-    const [alert, setAlert] = useState<AlertType>({ type: '', msg: '' });
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
     const { token } = useParams<{ token: string }>();
 
@@ -17,7 +17,7 @@ const NewPassword: FC = () => {
         if (!password || password.length < 6) {
             setAlert({
                 type: 'alert',
-                msg: 'Password is required and must be at least 6 characters'
+                message: 'Password is required and must be at least 6 characters'
             });
             return;
         }
@@ -31,7 +31,7 @@ const NewPassword: FC = () => {
             if (response.status !== 200) {
                 setAlert({
                     type: 'alert',
-                    msg: response.data.message
+                    message: response.data.message
                 });
                 return;
             }
@@ -40,7 +40,7 @@ const NewPassword: FC = () => {
                 setPassword('');
                 setAlert({
                     type: 'success',
-                    msg: response.data.message
+                    message: response.data.message
                 });
                 setPasswordUpdated(true);
             }
@@ -48,7 +48,7 @@ const NewPassword: FC = () => {
         } catch (error: any) {
             setAlert({
                 type: 'error',
-                msg: error.response.data.message
+                message: error.response.data.message
             });
         }
     }
@@ -60,7 +60,7 @@ const NewPassword: FC = () => {
             </div>
             <div className='mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white'>
                 {
-                    alert.msg && <Alert type={alert.type} msg={alert.msg} />
+                    alert.message && <Alert alert={alert} />
                 }
                 <form onSubmit={handleSubmit}>
                     <div className="my-6">

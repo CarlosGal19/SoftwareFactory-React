@@ -5,6 +5,7 @@ import Alert from "../../components/Static/Alert";
 import Post from "../../components/Topic/Post";
 import CreatePost from "../../components/Topic/createPost";
 import useAuth from "../../hooks/useAuth";
+import { AlertType } from "../../Types/Types";
 
 type OnePost = {
   id: number;
@@ -19,7 +20,7 @@ type OnePost = {
 
 const Topic: FC = () => {
   const [posts, setPosts] = useState<OnePost[]>([]);
-  const [alert, setAlert] = useState({ type: '', msg: '' });
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
   const [editingPost, setEditingPost] = useState<OnePost | null>(null);
   const [formData, setFormData] = useState({ title: '', content: '', url_img: '' });
   const { id, name } = useParams();
@@ -34,7 +35,7 @@ const Topic: FC = () => {
       });
       setPosts(response.data.posts);
     } catch (error: any) {
-      setAlert({ msg: error.response.data.message, type: 'alert' });
+      setAlert({ message: error.response.data.message, type: 'alert' });
     }
   };
 
@@ -56,7 +57,7 @@ const Topic: FC = () => {
       });
       fetchPosts(); // Refresh posts after deletion
     } catch (error: any) {
-      setAlert({ msg: error.response.data.message, type: 'alert' });
+      setAlert({ message: error.response.data.message, type: 'alert' });
     }
   };
 
@@ -74,7 +75,7 @@ const Topic: FC = () => {
       setFormData({ title: '', content: '', url_img: '' });
       fetchPosts(); // Refresh posts after update
     } catch (error: any) {
-      setAlert({ msg: error.response.data.message, type: 'alert' });
+      setAlert({ message: error.response.data.message, type: 'alert' });
     }
   };
 
@@ -93,7 +94,7 @@ const Topic: FC = () => {
       </div>
 
       <div className="md:container md:mx-auto my-8 p-6 bg-gray-50 rounded-lg shadow-md">
-        {alert.msg && <Alert type={alert.type} msg={alert.msg} />}
+        {alert.message && <Alert alert={alert} />}
         <div className="space-y-6">
           {posts && posts.map((post: OnePost) => (
             <Post
