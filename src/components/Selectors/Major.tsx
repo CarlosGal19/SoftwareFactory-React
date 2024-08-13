@@ -1,18 +1,22 @@
 import { FC, useEffect, useState, FormEvent } from 'react';
 import axiosClient from '../../config/axios';
-import { MajorType } from '../../Types/Types';
+import { AlertType, MajorType } from '../../Types/Types';
+import Alert from '../Static/Alert';
 
 const Major: FC<{major: number, setMajor: (major: number) => void}> = ({major, setMajor}) => {
 
     const [majors, setMajors] = useState<MajorType[]>([]);
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
     useEffect(() => {
         async function fetchMajors() {
             try {
                 const response = await axiosClient.get('/majors');
                 setMajors(response.data.majors);
+                setAlert({message: response.data.message, type: 'success'})
             } catch (error: any) {
                 setMajors([]);
+                setAlert({message: error.response.data.message, type:'alert'})
             }
         }
         fetchMajors();
@@ -26,6 +30,9 @@ const Major: FC<{major: number, setMajor: (major: number) => void}> = ({major, s
     return (
         <>
             <select name="major" id="major" value={major} onChange={handleChange}>
+            {
+                alert.message && <Alert alert={alert} />
+            }
                 {
                     !majors.length ? (
                         <option value="">No majors</option>

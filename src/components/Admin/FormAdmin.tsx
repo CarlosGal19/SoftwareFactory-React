@@ -2,6 +2,8 @@
 import { FC, FormEvent, useState } from 'react'
 import Major from '../Selectors/Major'
 import axiosClient from '../../config/axios';
+import { AlertType } from '../../Types/Types';
+import Alert from '../Static/Alert';
 
 const FormAdmin: FC = () => {
 
@@ -14,6 +16,7 @@ const FormAdmin: FC = () => {
   const [gender, setGender] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [repeatPassword, setRepeatPassword] = useState<string>('');
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -49,16 +52,16 @@ const FormAdmin: FC = () => {
       setGender('');
       setPassword('');
       setRepeatPassword('');
-      console.log(response)
+      setAlert({message: response.data.message, type: 'success'})
     } catch (error: any) {
-      console.log('error');
+      setAlert({message: error.response.data.message, type: 'alert'})
     }
   };
 
   return (
     <>
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white w-2/3 mx-auto">
-        {/* {alert.msg && <Alert type={alert.type} msg={alert.msg} />} */}
+        {alert.message && <Alert alert={alert} />}
         <form onSubmit={handleSubmit}>
           <div className="mb-5">
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>

@@ -1,12 +1,14 @@
 import { FC, useState, useEffect } from 'react'
 import axiosClient from '../../../config/axios'
-import { AxiosError } from 'axios'
 import useAuth from '../../../hooks/useAuth'
+import { AlertType } from '../../../Types/Types'
+import Alert from '../../Static/Alert'
 
 const PendingPosts: FC = () => {
 
   const [posts, setPosts] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(true)
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const { jwt } = useAuth()
 
@@ -19,9 +21,9 @@ const PendingPosts: FC = () => {
           }
         })
         setPosts(response.data.posts)
-      } catch (error) {
-        const err = error as AxiosError
-        console.log(err.response?.data)
+        setAlert({message: response.data.message, type: 'success'})
+      } catch (error: any) {
+        setAlert({message: error.response.data.message, type:'alert'})
       } finally {
         setLoading(false)
       }
@@ -30,6 +32,8 @@ const PendingPosts: FC = () => {
   }, [jwt]);
 
   if (loading) return <p className="text-2xl">...</p>
+
+  if(alert.message) return <Alert alert={alert}/>
 
   return (
     <p className="text-2xl">{posts}</p>

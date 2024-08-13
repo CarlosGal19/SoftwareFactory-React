@@ -1,6 +1,8 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import axiosClient from "../../config/axios"
 import useAuth from "../../hooks/useAuth";
+import { AlertType } from "../../Types/Types";
+import Alert from "../Static/Alert";
 
 type requestRequest = {
     id: number;
@@ -20,6 +22,7 @@ type requestRequest = {
 const Friend: FC<{ request: requestRequest }> = ({ request }) => {
 
     const { jwt } = useAuth();
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
     const handleClick = async (e: any) => {
         const status = e.target.value;
@@ -32,14 +35,17 @@ const Friend: FC<{ request: requestRequest }> = ({ request }) => {
                     Authorization: `Bearer ${jwt}`
                 }
             })
-            console.log(response.data.message);
+            setAlert({message: response.data.message, type: 'success'})
         } catch (error: any) {
-            console.log(error.response.data.message)
+            setAlert({message: error.response.data.message, type:'alert'})
         }
     }
 
     return (
         <li className="flex items-center justify-between py-4 px-6">
+            {
+                alert.message && <Alert alert={alert} />
+            }
             <div className="flex items-center space-x-4">
                 <img
                     className="w-16 h-16 rounded-full object-cover border border-gray-200"

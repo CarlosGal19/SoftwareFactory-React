@@ -1,14 +1,16 @@
 import axiosClient from "../../config/axios"
 import { useEffect, useState, FC } from "react"
 import Admin from "./Admin"
-import { UserType } from "../../Types/Types"
+import { AlertType, UserType } from "../../Types/Types"
 import useAuth from '../../hooks/useAuth'
+import Alert from "../Static/Alert"
 
 const Admins: FC = () => {
 
   const { jwt } = useAuth();
 
   const [admins, setAdmins] = useState<UserType[]>([]);
+  const [alert, setAlert] = useState<AlertType>({} as AlertType)
 
   useEffect(() => {
     async function fectAdmins() {
@@ -19,8 +21,9 @@ const Admins: FC = () => {
           },
         })
         setAdmins(response.data.admins);
-      } catch (error) {
-        console.log(error)
+        setAlert({message: '', type: 'success'})
+      } catch (error: any) {
+        setAlert({message: error.response.data.message, type:'alert'})
       }
     }
     fectAdmins();
@@ -30,6 +33,9 @@ const Admins: FC = () => {
 
   return (
     <div>
+      {
+        alert.message && <Alert alert={alert} />
+      }
       {
         admins.map((admin: UserType) => (
           <Admin key={admin.id} admin={admin} />

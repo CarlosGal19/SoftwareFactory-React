@@ -1,11 +1,14 @@
 import { FC, useEffect, useState } from 'react'
 import axiosClient from '../../../config/axios'
 import useAuth from '../../../hooks/useAuth'
+import { AlertType } from '../../../Types/Types'
+import Alert from '../../Static/Alert'
 
 const Admins: FC = () => {
 
   const [admins, setAdmins] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(true)
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const { jwt } = useAuth()
 
@@ -18,8 +21,9 @@ const Admins: FC = () => {
           }
         });
         setAdmins(response.data.count);
-      } catch (error) {
-        console.log(error);
+        setAlert({message: response.data.message, type: 'success'})
+      } catch (error: any) {
+        setAlert({message: error.response.data.message, type:'alert'})
       }
       setLoading(false);
     }
@@ -27,6 +31,8 @@ const Admins: FC = () => {
     }, []);
 
   if (loading) return <p className="text-2xl">...</p>
+
+  if(alert.message) return <Alert alert={alert}/>
 
   return (
     <p className="text-2xl">{admins}</p>

@@ -1,12 +1,14 @@
 import { FC, useEffect, useState, FormEvent } from 'react';
 import axiosClient from '../../config/axios';
-import { ForumType } from '../../Types/Types';
+import { AlertType, ForumType } from '../../Types/Types';
 import useAuth from "../../hooks/useAuth";
+import Alert from '../Static/Alert';
 
 const Forum: FC<{ setForum: (forum: number) => void, forum: number }> = ({ setForum, forum }) => {
 
     const [forums, setForums] = useState<ForumType[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
     const { jwt } = useAuth();
 
@@ -19,8 +21,10 @@ const Forum: FC<{ setForum: (forum: number) => void, forum: number }> = ({ setFo
                     }
                 });
                 setForums(response.data);
+                setAlert({ message: response.data.message, type: 'success' })
             } catch (error: any) {
                 setForums([]);
+                setAlert({ message: error.response.data.message, type: 'alert' })
             } finally {
                 setLoading(false);
             }
@@ -38,6 +42,9 @@ const Forum: FC<{ setForum: (forum: number) => void, forum: number }> = ({ setFo
     return (
         <>
             <select name="forum" id="forum" value={forum} onChange={handleChange}>
+                {
+                    alert.message && <Alert alert={alert} />
+                }
                 {
                     !forums.length ? (
                         <option value="">No forums</option>

@@ -1,13 +1,15 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
-import { ForumType } from "../../Types/Types";
+import { AlertType, ForumType } from "../../Types/Types";
 import useAuth from '../../hooks/useAuth'
+import Alert from "../Static/Alert";
 
 const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
 
     const [edit, setEdit] = useState<boolean>(false);
     const [name, setName] = useState<string>(forum.name);
     const [description, setDescription] = useState<string>(forum.description);
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
     const { jwt } = useAuth();
 
@@ -18,9 +20,9 @@ const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
                     Authorization: `Bearer ${jwt}`,
                 },
             });
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
+            setAlert({message: response.data.message, type: 'success'})
+        } catch (error: any) {
+            setAlert({message: error.response.data.message, type: 'alert'})
         }
     };
 
@@ -38,9 +40,9 @@ const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
                     Authorization: `Bearer ${jwt}`,
                 },
             });
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
+            setAlert({message: response.data.message, type: 'success'})
+        } catch (error: any) {
+            setAlert({message: error.response.data.message, type: 'alert'})
         }
     }
 
@@ -50,6 +52,9 @@ const ForumItem: FC<{ forum: ForumType }> = ({ forum }) => {
                 key={forum.id}
                 className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center"
             >
+                {
+                    alert.message && <Alert alert={alert}/>
+                }
                 <div className="mr-8">
                     <h2 className="text-xl font-semibold text-gray-800">{forum.name}</h2>
                     <p className="text-gray-700">{forum.description}</p>

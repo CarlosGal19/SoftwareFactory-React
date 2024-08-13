@@ -1,12 +1,14 @@
 import axiosClient from "../../config/axios";
 import { useEffect, useState, FC } from "react";
 import Topic from "./Topic";
-import { TopicType } from "../../Types/Types";
+import { AlertType, TopicType } from "../../Types/Types";
 import useAuth from "../../hooks/useAuth";
+import Alert from "../Static/Alert";
 
 const Topics: FC<{ id: string }> = ({ id }) => {
 
     const [topics, setTopics] = useState<TopicType[]>([]);
+    const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
     const { jwt } = useAuth();
 
@@ -19,8 +21,9 @@ const Topics: FC<{ id: string }> = ({ id }) => {
                     }
                 })
                 setTopics(response.data.topics);
+                setAlert({message: response.data.message, type: 'success'})
             } catch (error: any) {
-                console.log(error.response.data.message || 'An error occurred');
+                setAlert({message: error.response.data.message, type:'alert'})
             }
         }
         fetchTopics();
@@ -28,6 +31,9 @@ const Topics: FC<{ id: string }> = ({ id }) => {
 
     return (
         <div className="space-y-4">
+            {
+                alert.message && <Alert alert={alert} />
+            }
             { topics.length > 0 && topics.map((topic: TopicType) => (
                 <Topic key={topic.id} topic={topic} />
             ))}

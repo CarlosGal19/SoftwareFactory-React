@@ -1,13 +1,15 @@
 import { FC, useState } from "react";
 import axiosClient from "../../config/axios";
-import { TopicType } from "../../Types/Types";
+import { AlertType, TopicType } from "../../Types/Types";
 import useAuth from '../../hooks/useAuth'
+import Alert from "../Static/Alert";
 
 const TopicItem: FC<{ topic: TopicType }> = ({ topic }) => {
 
     const [edit, setEdit] = useState<boolean>(false);
     const [name, setName] = useState<string>(topic.name);
     const [description, setDescription] = useState<string>(topic.description);
+    const [alert, setAlert] = useState<AlertType>({} as AlertType)
 
     const { jwt } = useAuth();
 
@@ -18,9 +20,9 @@ const TopicItem: FC<{ topic: TopicType }> = ({ topic }) => {
                     Authorization: `Bearer ${jwt}`,
                 },
             });
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
+            setAlert({message: response.data.message, type: 'success'});
+        } catch (error: any) {
+            setAlert({message: error.response.data.message, type: 'alert'})
         }
     };
 
@@ -39,9 +41,9 @@ const TopicItem: FC<{ topic: TopicType }> = ({ topic }) => {
                     Authorization: `Bearer ${jwt}`,
                 },
             });
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
+            setAlert({message: response.data.message, type: 'success'})
+        } catch (error: any) {
+            setAlert({message: error.response.data.message, type: 'alert'})
         }
     }
 
@@ -51,6 +53,9 @@ const TopicItem: FC<{ topic: TopicType }> = ({ topic }) => {
                 key={topic.id}
                 className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center"
             >
+                {
+                    alert.message && <Alert alert={alert}/>
+                }
                 <div className="mr-8">
                     <h2 className="text-xl font-semibold text-gray-800">{topic.name}</h2>
                     <p className="text-gray-700">{topic.description}</p>
