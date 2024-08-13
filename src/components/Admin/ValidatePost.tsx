@@ -19,7 +19,7 @@ const ValidatePost: FC<{ post: PostType }> = ({ post }) => {
           Authorization: `Bearer ${jwt}`,
         },
       });
-      setAlert({ message: response.data.message, type: 'success' });
+      setAlert({ message: response.data.message, type: `${status === 'rejected' ? 'alert' : 'success'}` });
     } catch (error: any) {
       setAlert({ message: error.response.data.message, type: 'alert' })
     }
