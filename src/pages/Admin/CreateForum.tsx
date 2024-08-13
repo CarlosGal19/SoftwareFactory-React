@@ -2,11 +2,14 @@ import { FormEvent, useState } from 'react';
 import axiosClient from '../../config/axios';
 import { Link } from 'react-router-dom';
 import useAuth from "../../hooks/useAuth";
+import { AlertType } from '../../Types/Types';
+import Alert from '../../components/Static/Alert';
 
 const CreateForum = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState<AlertType>({} as AlertType);
 
   const { jwt } = useAuth();
 
@@ -25,10 +28,10 @@ const CreateForum = () => {
           Authorization: `Bearer ${jwt}`,
         }
       });
-      console.log(response.data);
+      setAlert({ message: response.data.message, type: 'success' })
       resetForm();
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      setAlert({ message: error.response.data.message, type: 'alert' })
     } finally {
       setLoading(false);
     }
@@ -43,6 +46,9 @@ const CreateForum = () => {
     <div className="p-6 w-full">
       <h1 className="text-3xl font-bold mb-6">Create New Forum</h1>
       <div className="mt-8 bg-white p-6 rounded-lg shadow-md">
+        {
+          alert.message && <Alert alert={alert} />
+        }
         <h2 className="text-2xl font-bold mb-4">New Forum</h2>
         {loading && <p>Loading...</p>}
         <form onSubmit={handleCreateForum} className="space-y-4">
