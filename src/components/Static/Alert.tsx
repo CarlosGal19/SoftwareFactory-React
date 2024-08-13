@@ -1,33 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { FC, useState, useEffect } from 'react'
+import { AlertType } from '../../Types/Types';
 
-interface AlertProps {
-  type: string;
-  msg: string;
-}
+const Alert: FC<{alert: AlertType}> = ({alert}) => {
 
-const Alert: React.FC<AlertProps> = ({ type, msg }) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState<boolean>(true);
 
-  useEffect(() => {
-    // Ocultar la alerta después de 3 segundos
+  useEffect(()=> {
     const timer = setTimeout(() => {
       setVisible(false);
     }, 3000);
 
-    // Limpiar el temporizador si el componente se desmonta antes de que termine
     return () => clearTimeout(timer);
   }, []);
 
-  if (!visible) return null;
+  if(!visible) return null;
 
   return (
-    <div
-      className={`${type === 'alert' ? 'bg-red-600' : 'bg-indigo-600'} text-center block text-white font-bold text-xl rounded-2xl py-5 my-8`}
-      role="alert"
-    >
-      {msg}
+    <div className={`${alert.type === 'alert' ? 'bg-red-600' : 'bg-green-600'} py-4 rounded-3xl px-4 my-4`}>
+        <p className="text-2xl font-bold">{alert.message}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Alert;
+export default Alert

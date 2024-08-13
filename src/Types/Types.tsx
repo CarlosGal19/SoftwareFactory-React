@@ -43,8 +43,8 @@ type PostType = {
 
 type AlertType = {
     type: string;
-    msg: string;
-  }
+    message: string
+}
 
 export type {
     ForumType,
